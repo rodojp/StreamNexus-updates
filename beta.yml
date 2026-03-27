@@ -1,9 +1,9 @@
-version: '0.1.11'
+version: '0.1.12'
 files:
-  - url: 'TwitchZ Setup 0.1.11.exe'
-    sha512: '8LHZny8Rwgcl4YNL5Ksx8/VIrhio/7lLO8GwMzxUum5lieDQG+rginm+uHuniRclEK/HoRq7SpcHQhls0oQYaA=='
-    size: 79641716
-    blockMapSize: 84998
-path: 'TwitchZ Setup 0.1.11.exe'
-sha512: '8LHZny8Rwgcl4YNL5Ksx8/VIrhio/7lLO8GwMzxUum5lieDQG+rginm+uHuniRclEK/HoRq7SpcHQhls0oQYaA=='
-releaseDate: '2026-03-27T19:00:27.608Z'
+  - url: 'TwitchZ Setup 0.1.12.exe'
+    sha512: 'Y4VtGo2REVogL+W/Z+lb8YbbgTxvQr9cFn4HzIPrLBW81UM8hslE2dNRsHgcyir1mByM3r1AfKEUDMWxor5uIg=='
+    size: 75922232
+    blockMapSize: 80812
+path: 'TwitchZ Setup 0.1.12.exe'
+sha512: 'Y4VtGo2REVogL+W/Z+lb8YbbgTxvQr9cFn4HzIPrLBW81UM8hslE2dNRsHgcyir1mByM3r1AfKEUDMWxor5uIg=='
+releaseDate: '2026-03-27T19:32:23.690Z'
