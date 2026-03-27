@@ -1,12 +1,12 @@
-﻿TwitchZ 0.1.3 / beta release staging
+﻿TwitchZ 0.1.4 / beta release staging
 
 Update base URL: https://rodojp.github.io/twitchz-updates
 Channel: beta
 
 Upload the following files to your generic update server:
 - beta.yml
-- TwitchZ Setup 0.1.3.exe
-- TwitchZ Setup 0.1.3.exe.blockmap
+- TwitchZ Setup 0.1.4.exe
+- TwitchZ Setup 0.1.4.exe.blockmap
 
 Notes:
 - Keep the file names unchanged.
