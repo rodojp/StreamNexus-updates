@@ -1,14 +1,14 @@
-﻿TwitchZ 0.1.18-beta.1 / beta release staging
+﻿TwitchZ 0.1.18 / latest release staging
 
 Provider: github
-Channel: beta
+Channel: latest
 GitHub repository: rodojp/twitchz-updates
-GitHub releaseType: prerelease
+GitHub releaseType: release
 
 Upload the following files to the target GitHub Release as assets:
-- beta.yml
-- TwitchZ Setup 0.1.18-beta.1.exe
-- TwitchZ Setup 0.1.18-beta.1.exe.blockmap
+- TwitchZ-Setup-0.1.18.exe
+- TwitchZ-Setup-0.1.18.exe.blockmap
+- latest.yml
 
 Notes:
 - Keep the file names unchanged.
