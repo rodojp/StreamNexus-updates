@@ -1,14 +1,16 @@
 ﻿TwitchZ 0.1.18-beta.1 / beta release staging
 
-Update base URL: https://rodojp.github.io/twitchz-updates
+Provider: github
 Channel: beta
+GitHub repository: rodojp/twitchz-updates
+GitHub releaseType: prerelease
 
-Upload the following files to your generic update server:
+Upload the following files to the target GitHub Release as assets:
 - beta.yml
 - TwitchZ Setup 0.1.18-beta.1.exe
 - TwitchZ Setup 0.1.18-beta.1.exe.blockmap
 
 Notes:
 - Keep the file names unchanged.
-- Upload the metadata YAML and installer files to the same base URL.
-- beta users should point to channel=beta, public users should point to channel=latest.
+- Upload the metadata YAML and installer files to the same GitHub Release.
+- beta should be uploaded as prerelease, latest should be uploaded as release unless intentionally overridden.
