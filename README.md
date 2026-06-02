@@ -1,7 +1,7 @@
-# TwitchZ
+# StreamNexus
 
-TwitchZ is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.
-This repository hosts public release artifacts and compliance documents for TwitchZ.
+StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.
+This repository hosts public release artifacts and compliance documents for StreamNexus.
 
 利用を始める前に、以下の Privacy Policy と Terms of Service を確認してください。
 YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Service も適用されます。
@@ -19,22 +19,22 @@ YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Se
 
 ## Google / YouTube Integration
 
-TwitchZ uses YouTube API Services only after the user explicitly authorizes Google OAuth.
+StreamNexus uses YouTube API Services only after the user explicitly authorizes Google OAuth.
 The requested scope is read-only:
 
 - `https://www.googleapis.com/auth/youtube.readonly`
 
-TwitchZ uses this scope to show the user's YouTube subscriptions, live stream status, and public video metadata inside the app.
-TwitchZ does not upload, delete, edit, or manage YouTube videos, comments, playlists, or channels.
+StreamNexus uses this scope to show the user's YouTube subscriptions, live stream status, and public video metadata inside the app.
+StreamNexus does not upload, delete, edit, or manage YouTube videos, comments, playlists, or channels.
 
-## Before Using TwitchZ
+## Before Using StreamNexus
 
-The TwitchZ app shows a policy confirmation screen before the user starts initial setup or connects Twitch / YouTube.
+The StreamNexus app shows a policy confirmation screen before the user starts initial setup or connects Twitch / YouTube.
 Users must confirm the public Privacy Policy and Terms of Service before using app features.
 
 ## Disconnect and Revoke Access
 
-Users can disconnect YouTube inside TwitchZ settings, and can also revoke access from Google's third-party app access page:
+Users can disconnect YouTube inside StreamNexus settings, and can also revoke access from Google's third-party app access page:
 
 - <https://security.google.com/settings/security/permissions>
 
