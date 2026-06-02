@@ -1,2 +1,39 @@
-# twitchz-updates
-アップデート用
+# TwitchZ
+
+TwitchZ is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.
+This repository hosts public release artifacts and compliance documents for TwitchZ.
+
+利用を始める前に、以下の Privacy Policy と Terms of Service を確認してください。
+YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Service も適用されます。
+
+## Public URLs
+
+- App home: <https://github.com/rodojp/twitchz-updates>
+- Releases: <https://github.com/rodojp/twitchz-updates/releases>
+- Privacy Policy: <https://github.com/rodojp/twitchz-updates/blob/main/privacy-policy.md>
+- Terms of Service: <https://github.com/rodojp/twitchz-updates/blob/main/terms-of-service.md>
+- Google Privacy Policy: <https://policies.google.com/privacy>
+- YouTube Terms of Service: <https://www.youtube.com/t/terms>
+
+## Google / YouTube Integration
+
+TwitchZ uses YouTube API Services only after the user explicitly authorizes Google OAuth.
+The requested scope is read-only:
+
+- `https://www.googleapis.com/auth/youtube.readonly`
+
+TwitchZ uses this scope to show the user's YouTube subscriptions, live stream status, and public video metadata inside the app.
+TwitchZ does not upload, delete, edit, or manage YouTube videos, comments, playlists, or channels.
+
+## Before Using TwitchZ
+
+The TwitchZ app shows a policy confirmation screen before the user starts initial setup or connects Twitch / YouTube.
+Users must confirm the public Privacy Policy and Terms of Service before using app features.
+
+## Disconnect and Revoke Access
+
+Users can disconnect YouTube inside TwitchZ settings, and can also revoke access from Google's third-party app access page:
+
+- <https://security.google.com/settings/security/permissions>
+
+See [Privacy Policy](./privacy-policy.md) for details.
