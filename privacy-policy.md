@@ -3,6 +3,8 @@
 Effective date: 2026-06-02
 Last updated: 2026-06-02
 
+[日本語版はこちら / Japanese translation](./privacy-policy.ja.md)
+
 TwitchZ is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.
 This Privacy Policy explains what information TwitchZ handles and how YouTube API Services data is used.
 

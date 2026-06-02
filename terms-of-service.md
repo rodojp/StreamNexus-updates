@@ -3,6 +3,8 @@
 Effective date: 2026-06-02
 Last updated: 2026-06-02
 
+[日本語版はこちら / Japanese translation](./terms-of-service.ja.md)
+
 These Terms of Service apply to the TwitchZ desktop app and its release distribution through `rodojp/twitchz-updates`.
 
 ## 1. Use of TwitchZ

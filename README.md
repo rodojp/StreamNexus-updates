@@ -11,7 +11,9 @@ YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Se
 - App home: <https://github.com/rodojp/twitchz-updates>
 - Releases: <https://github.com/rodojp/twitchz-updates/releases>
 - Privacy Policy: <https://github.com/rodojp/twitchz-updates/blob/main/privacy-policy.md>
+- Privacy Policy, Japanese: <https://github.com/rodojp/twitchz-updates/blob/main/privacy-policy.ja.md>
 - Terms of Service: <https://github.com/rodojp/twitchz-updates/blob/main/terms-of-service.md>
+- Terms of Service, Japanese: <https://github.com/rodojp/twitchz-updates/blob/main/terms-of-service.ja.md>
 - Google Privacy Policy: <https://policies.google.com/privacy>
 - YouTube Terms of Service: <https://www.youtube.com/t/terms>
 
