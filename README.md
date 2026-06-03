@@ -17,6 +17,14 @@ YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Se
 - Google Privacy Policy: <https://policies.google.com/privacy>
 - YouTube Terms of Service: <https://www.youtube.com/t/terms>
 
+## Google Compliance Materials
+
+- YouTube OAuth submission notes: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-cloud-youtube-oauth-submission.md>
+- Architecture and user flows: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.md>
+- Architecture and user flows, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.ja.md>
+- Pre-submission compliance review: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.md>
+- Pre-submission compliance review, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.ja.md>
+
 ## Google / YouTube Integration
 
 StreamNexus uses YouTube API Services only after the user explicitly authorizes Google OAuth.
