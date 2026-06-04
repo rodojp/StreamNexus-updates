@@ -1,7 +1,7 @@
 # StreamNexus Privacy Policy
 
 Effective date: 2026-06-02
-Last updated: 2026-06-02
+Last updated: 2026-06-04
 
 [日本語版はこちら / Japanese translation](./privacy-policy.ja.md)
 
@@ -64,15 +64,18 @@ StreamNexus only shares information when required by user actions, app update de
 ## 6. Deletion, Disconnect, and Revocation
 
 Users can disconnect YouTube from StreamNexus settings.
-When the user disconnects YouTube, StreamNexus clears the locally stored YouTube OAuth tokens used by the app.
+When the user disconnects YouTube, StreamNexus programmatically revokes the stored Google OAuth token and then clears the locally stored YouTube OAuth tokens used by the app.
+If revocation fails because of a network or server error, StreamNexus keeps the local token so the user can retry revocation.
 
-Users can remove tracked YouTube channels from the app's YouTube channel management UI.
+Users can also use the local YouTube Authorized Data deletion control in StreamNexus settings.
+This local deletion removes StreamNexus's locally stored YouTube tracked channels, YouTube stream history, YouTube watch sessions, YouTube stream notes, YouTube claim history rows, and locally stored YouTube OAuth tokens.
+This does not delete the user's YouTube account, videos, comments, playlists, channels, or YouTube-side subscriptions.
 
 Users can also revoke StreamNexus access from Google's third-party app access page:
 
 - <https://security.google.com/settings/security/permissions>
 
-If a user wants all local StreamNexus data removed, they should disconnect YouTube, remove tracked channels, and delete StreamNexus's local app data from Windows.
+If a user wants all local StreamNexus data removed, they should disconnect YouTube, use the local YouTube Authorized Data deletion control, and delete StreamNexus's local app data from Windows.
 If assistance is needed, the user should contact the support email shown on the Google OAuth consent screen.
 
 ## 7. Changes

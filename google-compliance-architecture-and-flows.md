@@ -1,6 +1,6 @@
 # StreamNexus Google / YouTube Compliance Architecture and User Flows
 
-Last updated: 2026-06-02
+Last updated: 2026-06-04
 
 [日本語版はこちら / Japanese translation](./google-compliance-architecture-and-flows.ja.md)
 
@@ -29,6 +29,7 @@ The review package is aligned against these official Google / YouTube references
 - Google OAuth verification requirements: <https://support.google.com/cloud/answer/13464321>
 - Submitting an app for OAuth verification: <https://support.google.com/cloud/answer/13461325>
 - OAuth app branding: <https://support.google.com/cloud/answer/15549049>
+- OAuth 2.0 for iOS and desktop apps: <https://developers.google.com/identity/protocols/oauth2/native-app>
 
 ## 3. Scope Summary
 
@@ -47,6 +48,11 @@ https://www.googleapis.com/auth/youtube.readonly
 StreamNexus does not use YouTube OAuth to upload, delete, edit, comment on, or manage YouTube videos, playlists, channels, or comments.
 
 ## 4. System Architecture
+
+Raster diagram assets for submission attachments:
+
+- [Architecture diagram PNG](./assets/google-compliance/streamnexus-architecture.png)
+- [Architecture diagram JPEG](./assets/google-compliance/streamnexus-architecture.jpg)
 
 ```mermaid
 flowchart LR
@@ -96,6 +102,11 @@ flowchart LR
 | Local diagnostic logs | App runtime | Local app storage / logs | Troubleshooting and stability review | Shared only when the user chooses to provide logs |
 
 ## 6. OAuth Consent and YouTube Data Flow
+
+Raster flow assets:
+
+- [OAuth user flow PNG](./assets/google-compliance/streamnexus-user-flow.png)
+- [OAuth user flow JPEG](./assets/google-compliance/streamnexus-user-flow.jpg)
 
 ```mermaid
 sequenceDiagram
@@ -154,30 +165,40 @@ It is separate from YouTube OAuth and does not grant StreamNexus access to YouTu
 
 ## 8. Revocation and Deletion Flow
 
+Raster flow assets:
+
+- [Revocation and deletion flow PNG](./assets/google-compliance/streamnexus-revocation-deletion-flow.png)
+- [Revocation and deletion flow JPEG](./assets/google-compliance/streamnexus-revocation-deletion-flow.jpg)
+
 ```mermaid
 flowchart TD
   Start["User wants to disconnect YouTube"] --> Settings["Open Linked Accounts settings"]
   Settings --> Disconnect["Click YouTube disconnect button"]
   Disconnect --> Confirm["Confirm unlink action"]
   Confirm --> Logout["POST /api/youtube/auth/logout"]
-  Logout --> ClearTokens["Clear locally stored YouTube access and refresh tokens"]
+  Logout --> Revoke["Call Google token revoke endpoint"]
+  Revoke --> ClearTokens["Clear locally stored YouTube access and refresh tokens"]
   ClearTokens --> AppState["Update app auth state"]
+  Settings --> DeleteLocal["Click local authorized-data deletion"]
+  DeleteLocal --> DeleteRoute["DELETE /api/youtube/authorized-data"]
+  DeleteRoute --> DeleteRows["Delete local YouTube rows from SQLite"]
   AppState --> OptionalGoogle["User may also remove access in Google third-party access settings"]
   OptionalGoogle --> GooglePage["https://security.google.com/settings/security/permissions"]
-  ClearTokens --> LocalData["User can remove tracked channels and local app data"]
 ```
 
 Current implementation status:
 
-- In-app disconnect clears locally stored YouTube OAuth tokens.
+- In-app disconnect calls Google token revocation before clearing locally stored YouTube OAuth tokens.
+- If revocation fails because of a network or server error, local tokens are kept so the user can retry revocation.
+- The local authorized-data deletion action revokes any remaining token, clears local tokens, and deletes YouTube rows from local SQLite.
+- Local deletion covers `tracked_channels`, `stream_history`, `watch_sessions`, `stream_notes`, and `claim_history` rows where `platform = 'youtube'`.
 - The app links users to Google's third-party access page for account-side revocation.
 - Users can remove tracked YouTube channels from the app.
 - Users can remove all local StreamNexus data by deleting local app data from Windows.
 
-Compliance improvement recommended before final audit submission:
+Compliance follow-up before final audit submission:
 
-- Add programmatic Google token revocation on in-app YouTube disconnect.
-- Define and implement a local authorized-data deletion routine tied to YouTube disconnect or deletion request.
+- Capture screenshots and demo video showing the implemented revocation and local deletion controls.
 - Add periodic confirmation for stored YouTube authorization validity and clean up local YouTube API data when authorization cannot be refreshed.
 
 ## 9. User-Facing Screens to Capture
@@ -207,6 +228,6 @@ Required evidence:
 | Before-use policy confirmation | `PolicyConsentScreen` before initial setup and account linking | Ready |
 | Minimum OAuth scope | `youtube.readonly` only | Ready |
 | OAuth demo evidence | Needs screenshots / video captured from production configuration | Pending |
-| In-app revocation route | Local token clear exists | Needs programmatic Google revoke improvement |
-| Authorized data deletion | Manual/local deletion path exists | Needs clearer app-level deletion workflow |
+| In-app revocation route | `POST /api/youtube/auth/logout` calls Google token revoke endpoint | Implemented, needs screenshot/demo evidence |
+| Authorized data deletion | `DELETE /api/youtube/authorized-data` deletes local YouTube rows | Implemented, needs screenshot/demo evidence |
 | Access gate architecture | Cloudflare Worker, Google JWKS, D1 allowlist | Ready for supplemental explanation |

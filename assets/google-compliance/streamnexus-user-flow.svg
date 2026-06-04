@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">StreamNexus OAuth User Flow</title>
+  <desc id="desc">User flow from policy review to YouTube OAuth consent, read-only data use, disconnect, local deletion, and Google third-party access revocation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #0f172a; font: 700 40px Arial, sans-serif; }
+      .subtitle { fill: #475569; font: 400 20px Arial, sans-serif; }
+      .box { fill: #ffffff; stroke: #64748b; stroke-width: 2; }
+      .policy { fill: #ecfeff; stroke: #0891b2; }
+      .google { fill: #eef2ff; stroke: #4f46e5; }
+      .data { fill: #f0fdf4; stroke: #16a34a; }
+      .delete { fill: #fff1f2; stroke: #e11d48; }
+      .num { fill: #ffffff; font: 700 18px Arial, sans-serif; }
+      .circle { fill: #334155; }
+      .label { fill: #0f172a; font: 700 20px Arial, sans-serif; }
+      .small { fill: #475569; font: 400 15px Arial, sans-serif; }
+      .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .lane { fill: none; stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 10 8; }
+      .lane-title { fill: #334155; font: 700 18px Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="1050"/>
+  <text class="title" x="64" y="70">StreamNexus User Flow for Google / YouTube Review</text>
+  <text class="subtitle" x="64" y="105">Evidence flow for policy review, OAuth consent, scope visibility, API use, revocation, and local deletion.</text>
+
+  <rect class="lane" x="55" y="150" width="1490" height="240" rx="18"/>
+  <text class="lane-title" x="82" y="188">Before use and consent</text>
+  <rect class="box policy" x="110" y="220" width="280" height="110" rx="10"/>
+  <circle class="circle" cx="140" cy="250" r="16"/><text class="num" x="135" y="256">1</text>
+  <text class="label" x="165" y="253">Open app</text>
+  <text class="small" x="165" y="282">StreamNexus starts on Windows</text>
+
+  <rect class="box policy" x="480" y="220" width="330" height="110" rx="10"/>
+  <circle class="circle" cx="510" cy="250" r="16"/><text class="num" x="505" y="256">2</text>
+  <text class="label" x="535" y="253">Review policies</text>
+  <text class="small" x="535" y="282">Privacy, Terms, Google Privacy Policy</text>
+
+  <rect class="box policy" x="900" y="220" width="330" height="110" rx="10"/>
+  <circle class="circle" cx="930" cy="250" r="16"/><text class="num" x="925" y="256">3</text>
+  <text class="label" x="955" y="253">Open Linked Accounts</text>
+  <text class="small" x="955" y="282">Click YouTube link button</text>
+
+  <rect class="lane" x="55" y="430" width="1490" height="260" rx="18"/>
+  <text class="lane-title" x="82" y="468">OAuth authorization and read-only YouTube data use</text>
+  <rect class="box google" x="110" y="515" width="310" height="110" rx="10"/>
+  <circle class="circle" cx="140" cy="545" r="16"/><text class="num" x="135" y="551">4</text>
+  <text class="label" x="165" y="548">Google consent screen</text>
+  <text class="small" x="165" y="577">Show app name: StreamNexus</text>
+  <text class="small" x="165" y="600">Expand scope details</text>
+
+  <rect class="box google" x="500" y="515" width="310" height="110" rx="10"/>
+  <circle class="circle" cx="530" cy="545" r="16"/><text class="num" x="525" y="551">5</text>
+  <text class="label" x="555" y="548">OAuth callback</text>
+  <text class="small" x="555" y="577">Authorization code to localhost</text>
+  <text class="small" x="555" y="600">Tokens stored encrypted</text>
+
+  <rect class="box data" x="900" y="515" width="330" height="110" rx="10"/>
+  <circle class="circle" cx="930" cy="545" r="16"/><text class="num" x="925" y="551">6</text>
+  <text class="label" x="955" y="548">Use YouTube API</text>
+  <text class="small" x="955" y="577">youtube.readonly subscriptions</text>
+  <text class="small" x="955" y="600">Track channels and live status</text>
+
+  <rect class="lane" x="55" y="730" width="1490" height="240" rx="18"/>
+  <text class="lane-title" x="82" y="768">Disconnect, revocation, and local deletion</text>
+  <rect class="box delete" x="110" y="815" width="310" height="110" rx="10"/>
+  <circle class="circle" cx="140" cy="845" r="16"/><text class="num" x="135" y="851">7</text>
+  <text class="label" x="165" y="848">Disconnect YouTube</text>
+  <text class="small" x="165" y="877">POST /api/youtube/auth/logout</text>
+  <text class="small" x="165" y="900">Programmatic token revoke</text>
+
+  <rect class="box delete" x="500" y="815" width="310" height="110" rx="10"/>
+  <circle class="circle" cx="530" cy="845" r="16"/><text class="num" x="525" y="851">8</text>
+  <text class="label" x="555" y="848">Delete local data</text>
+  <text class="small" x="555" y="877">DELETE /api/youtube/authorized-data</text>
+  <text class="small" x="555" y="900">SQLite YouTube rows removed</text>
+
+  <rect class="box google" x="900" y="815" width="330" height="110" rx="10"/>
+  <circle class="circle" cx="930" cy="845" r="16"/><text class="num" x="925" y="851">9</text>
+  <text class="label" x="955" y="848">Google access page</text>
+  <text class="small" x="955" y="877">Optional account-side verification</text>
+  <text class="small" x="955" y="900">security.google.com permissions</text>
+
+  <path class="arrow" d="M390 275 H480"/>
+  <path class="arrow" d="M810 275 H900"/>
+  <path class="arrow" d="M1065 330 C1065 405 280 405 280 515"/>
+  <path class="arrow" d="M420 570 H500"/>
+  <path class="arrow" d="M810 570 H900"/>
+  <path class="arrow" d="M1065 625 C1065 710 1420 710 1420 742 C1420 780 280 780 280 815"/>
+  <path class="arrow" d="M420 870 H500"/>
+  <path class="arrow" d="M810 870 H900"/>
+</svg>

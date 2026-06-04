@@ -22,8 +22,16 @@ YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Se
 - YouTube OAuth submission notes: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-cloud-youtube-oauth-submission.md>
 - Architecture and user flows: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.md>
 - Architecture and user flows, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.ja.md>
+- Evidence package checklist: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-evidence-package.md>
+- Evidence package checklist, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-evidence-package.ja.md>
 - Pre-submission compliance review: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.md>
 - Pre-submission compliance review, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.ja.md>
+
+## Diagram Assets
+
+- Architecture diagram PNG: <https://github.com/rodojp/StreamNexus-updates/blob/main/assets/google-compliance/streamnexus-architecture.png>
+- OAuth user flow PNG: <https://github.com/rodojp/StreamNexus-updates/blob/main/assets/google-compliance/streamnexus-user-flow.png>
+- Revocation and deletion flow PNG: <https://github.com/rodojp/StreamNexus-updates/blob/main/assets/google-compliance/streamnexus-revocation-deletion-flow.png>
 
 ## Google / YouTube Integration
 

@@ -1,6 +1,6 @@
 # StreamNexus Pre-Submission Compliance Review
 
-Last updated: 2026-06-02
+Last updated: 2026-06-04
 
 [日本語版はこちら / Japanese translation](./pre-submission-compliance-review.ja.md)
 
@@ -12,10 +12,8 @@ It is not legal advice and should not replace attorney review.
 VERDICT: REVISE BEFORE FINAL AUDIT SUBMISSION
 
 StreamNexus has the core public policy pages, in-app policy links, pre-use policy confirmation, minimum YouTube read-only scope, and account disconnect UI in place.
-However, the current implementation should be improved before final audit submission in the following areas:
+The token revocation and local authorized-data deletion improvements are now implemented, but the package should still be revised before final audit submission in the following areas:
 
-- Programmatic Google token revocation on in-app YouTube disconnect.
-- Clear deletion workflow for local YouTube Authorized Data after disconnect or deletion request.
 - Screenshot / demo video evidence captured from the exact production OAuth configuration.
 - Final Google Cloud Console values, support email, authorized domains, and branding must be checked after the StreamNexus rename.
 - GitHub repository metadata should not point reviewers to the retired GitHub Pages / deployments URL.
@@ -34,18 +32,21 @@ However, the current implementation should be improved before final audit submis
 | Scope minimization | Only `https://www.googleapis.com/auth/youtube.readonly` is requested | Ready |
 | YouTube write actions | No upload, edit, delete, comment, playlist, or channel management scope is requested | Ready |
 | Token storage | YouTube access and refresh tokens are encrypted before local settings storage | Ready, assuming `SETTINGS_ENCRYPTION_KEY` is correctly provisioned |
+| Programmatic token revocation | `POST /api/youtube/auth/logout` calls Google's token revoke endpoint before clearing local tokens | Implemented, screenshot/demo evidence pending |
+| Local YouTube Authorized Data deletion | `DELETE /api/youtube/authorized-data` deletes local YouTube SQLite rows and clears tokens | Implemented, screenshot/demo evidence pending |
 | Access Gate separation | Google ID token access gate is documented as separate from YouTube OAuth | Ready for supplemental explanation |
 
 ## 3. Required or Strongly Recommended Fixes
 
-### Issue 1: Programmatic Google token revocation is not implemented
+### Issue 1: Programmatic Google token revocation evidence still needs capture
 
 Severity: Major
 
 Current app behavior:
 
 - In-app YouTube disconnect calls `POST /api/youtube/auth/logout`.
-- The backend clears locally stored YouTube access and refresh tokens.
+- The backend calls Google's OAuth token revocation endpoint before clearing locally stored YouTube access and refresh tokens.
+- If revocation fails because of a network or server error, local tokens are kept so the user can retry.
 - The app links users to Google's third-party app access page.
 
 Policy concern:
@@ -55,25 +56,26 @@ Policy concern:
 
 Recommended remediation:
 
-- Add a backend revoke step that calls Google's OAuth token revocation endpoint before clearing local tokens.
-- Treat revocation failure explicitly in the UI and logs.
-- After successful revoke or local disconnect, run local cleanup for YouTube Authorized Data associated with that authorization.
+- Capture app screenshots and demo video showing the disconnect control and confirmation.
+- Capture or provide test output showing revocation success and explicit failure handling.
+- Confirm the Google consent screen app name and scope match the submitted OAuth configuration.
 
 Suggested evidence after remediation:
 
-- Unit or integration test for token revoke request.
+- Integration test for token revoke request.
 - Screenshot of in-app disconnect.
 - Log or test output showing tokens are revoked or an explicit error is returned.
 
-### Issue 2: Authorized Data deletion workflow needs to be clearer
+### Issue 2: Authorized Data deletion workflow evidence still needs capture
 
 Severity: Major
 
 Current app behavior:
 
-- Users can remove tracked YouTube channels.
-- Users can delete StreamNexus local app data from Windows.
-- The Privacy Policy says users can contact support for deletion assistance.
+- Users can use the local authorized-data deletion control from StreamNexus settings.
+- The backend revokes any remaining token, clears local YouTube OAuth tokens, and deletes local YouTube rows from SQLite.
+- Local deletion covers `tracked_channels`, `stream_history`, `watch_sessions`, `stream_notes`, and `claim_history` rows where `platform = 'youtube'`.
+- The Privacy Policy describes the exact deletion behavior and clarifies that YouTube account data is not deleted.
 
 Policy concern:
 
@@ -82,12 +84,9 @@ Policy concern:
 
 Recommended remediation:
 
-- Define what StreamNexus treats as YouTube Authorized Data:
-  - OAuth tokens.
-  - Subscription-derived channel entries.
-  - Stored local data derived from authorized subscription import.
-- Add or document a cleanup action that removes YouTube Authorized Data from local SQLite and settings.
-- Keep public video metadata and user-created app notes separate only when there is a documented lawful basis and the data is not tied to authorized user data.
+- Capture the local deletion control in Settings.
+- Capture the deletion confirmation text explaining that YouTube account, videos, and YouTube-side subscriptions are not deleted.
+- Keep the integration test and Privacy Policy language available as supplemental evidence.
 
 Suggested evidence after remediation:
 
