@@ -30,6 +30,7 @@ SVG は編集用ソースとして残します。
 | Terms of Service URL | `https://github.com/rodojp/StreamNexus-updates/blob/main/terms-of-service.md` |
 | YouTube scope | `https://www.googleapis.com/auth/youtube.readonly` のみ |
 | OAuth redirect URI | packaged app または dev app が使う localhost callback URI |
+| OAuth client | Web application client ID `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`; client secret は表示しない |
 | Support email | Google OAuth consent screen に表示される support email と同一 |
 | Branding | app name に `Twitch` または `YouTube` を含めず、公開名称を `StreamNexus` にする |
 
@@ -60,7 +61,7 @@ production OAuth client が異なる場合は、最終提出前に production cl
 現在のスクリーンショット上の制限:
 
 - Google Cloud Console の Data Access では、scope justification と demo video URL がまだ空欄です。提出前に Google Cloud Console 側で入力してください。
-- 公開 repo に置くため、account email、account avatar、client ID、client secret は切り出しまたは黒塗りしています。
+- 公開 repo に置くため、account email、account avatar、client secret は切り出しまたは黒塗りしています。OAuth client ID は Google がデモ動画での識別を求めるため表示してもよい値ですが、client secret は絶対に表示しないでください。
 
 各スクリーンショットで確認したい点:
 
@@ -80,20 +81,27 @@ production OAuth client が異なる場合は、最終提出前に production cl
 
 - [streamnexus-google-compliance-demo.mp4](./evidence/demo-video/streamnexus-google-compliance-demo.mp4)
 
+Google Cloud Console に貼り付ける Scope usage 文面:
+
+```text
+StreamNexus uses https://www.googleapis.com/auth/youtube.readonly only to let a signed-in user view their own YouTube account data inside the desktop app. After OAuth consent, StreamNexus reads YouTube account/subscription-related data to import or select channels, monitor live-stream status, and display public video/live metadata for notifications and multiview playback. The data is shown only in the app UI and stored locally so the user can manage monitored channels. StreamNexus does not upload, edit, delete, comment on, manage videos/playlists/channels, or share/sell/use YouTube data for advertising or AI training. More limited access is insufficient because API-key-only public data cannot identify the user's YouTube account or user-selected/subscribed channels. StreamNexus requests only youtube.readonly and provides disconnect, Google token revocation, and local YouTube authorized-data deletion controls.
+```
+
 推奨撮影順:
 
-1. StreamNexus を起動する。
-2. 利用前ポリシー確認画面を表示する。
-3. Settings > Linked Accounts を開く。
-4. YouTube link をクリックする。
-5. Google OAuth consent screen で app name `StreamNexus` を表示する。
-6. permission details を展開し、`youtube.readonly` を表示する。
-7. 認可を完了する。
-8. 登録チャンネル取り込みやチャンネル選択など、認可済み read-only data を使う YouTube 機能を表示する。
-9. Settings > Linked Accounts に戻る。
-10. YouTube 連携解除の確認を表示する。
-11. local authorized-data deletion control を実行する。
-12. reviewer に求められた場合は、Google のサードパーティ製アプリ管理画面も表示する。
+1. App name `StreamNexus`、OAuth client type `Web application`、OAuth client ID `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`、requested scope `https://www.googleapis.com/auth/youtube.readonly` を表示する。
+2. StreamNexus を起動する。
+3. 利用前ポリシー確認画面を表示する。
+4. Settings > Linked Accounts を開く。
+5. YouTube link をクリックする。
+6. Google OAuth consent screen で app name `StreamNexus` を表示する。
+7. permission details を展開し、YouTube read-only access details を表示する。
+8. end-to-end の private demo を撮る場合は認可を完了する。
+9. 登録チャンネル取り込み、チャンネル選択、ライブ状態監視、公開動画/ライブメタデータ表示など、認可済み read-only data を使う YouTube 機能を表示する。
+10. Settings > Linked Accounts に戻る。
+11. YouTube 連携解除の確認を表示する。
+12. local authorized-data deletion control を実行する。
+13. reviewer に求められた場合は、Google のサードパーティ製アプリ管理画面も表示する。
 
 ## 5. 現在のエンジニアリング制御
 
@@ -110,6 +118,6 @@ production OAuth client が異なる場合は、最終提出前に production cl
 - Google Cloud Console の値が `StreamNexus` と一致している。
 - OAuth consent のスクリーンショットが review に出す OAuth client と同じ設定で撮影されている。
 - scope screenshot が展開済みで、必要な YouTube read-only scope のみを示している。
-- demo video に policy review、OAuth consent、YouTube 機能利用、disconnect、local deletion が含まれている。Google Cloud Console が YouTube link を求める場合は、local MP4 を提出に使う YouTube account へ upload し、その URL を Google Cloud Console に貼り付ける。
+- demo video に app name、OAuth client ID、policy review、OAuth consent、YouTube 機能利用、disconnect、local deletion が含まれている。Google Cloud Console が YouTube link を求める場合は、local MP4 を提出に使う YouTube account へ限定公開で upload し、その URL を Google Cloud Console に貼り付ける。
 - Google Cloud Console の scope justification を提出前に入力している。
 - Privacy Policy と Terms の URL が未ログインブラウザから 404 にならず開ける。

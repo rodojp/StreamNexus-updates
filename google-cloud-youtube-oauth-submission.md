@@ -58,9 +58,45 @@ Google Cloud / YouTube API compliance audit 向けには、次の補足資料も
   - `http://localhost:5173/settings/youtube/callback`
 - Scope:
   - `https://www.googleapis.com/auth/youtube.readonly`
+- OAuth client:
+  - Web application client ID: `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`
+  - Client secret は提出資料・公開 repo・デモ動画に表示しない。
 
 サポートメールは、公開提出前に実運用で受け取れるメールアドレスへ統一する。
 Privacy Policy の Contact セクションも、Google OAuth consent screen と同じサポートメールが分かる表現にする。
+
+## Google Cloud Data Access: Scope usage に貼る文面
+
+Google Cloud Console の `Data Access > Scope usage` には、基本的に英語で以下を貼り付ける。
+
+```text
+StreamNexus uses https://www.googleapis.com/auth/youtube.readonly only to let a signed-in user view their own YouTube account data inside the desktop app. After OAuth consent, StreamNexus reads YouTube account/subscription-related data to import or select channels, monitor live-stream status, and display public video/live metadata for notifications and multiview playback. The data is shown only in the app UI and stored locally so the user can manage monitored channels. StreamNexus does not upload, edit, delete, comment on, manage videos/playlists/channels, or share/sell/use YouTube data for advertising or AI training. More limited access is insufficient because API-key-only public data cannot identify the user's YouTube account or user-selected/subscribed channels. StreamNexus requests only youtube.readonly and provides disconnect, Google token revocation, and local YouTube authorized-data deletion controls.
+```
+
+参考日本語訳:
+
+```text
+StreamNexus は、ログイン済みユーザーがデスクトップアプリ内で自分の YouTube アカウントデータを表示するためだけに https://www.googleapis.com/auth/youtube.readonly を使用します。OAuth 同意後、StreamNexus は YouTube アカウントまたは登録チャンネル関連データを読み取り、チャンネルの取り込み・選択、ライブ配信状態の監視、通知とマルチビュー再生のための公開動画/ライブメタデータ表示に使用します。データはアプリ UI 内だけに表示され、ユーザーが監視対象チャンネルを管理できるようローカルに保存されます。StreamNexus は動画やプレイリストやチャンネルのアップロード、編集、削除、コメント投稿、管理を行わず、YouTube データを広告や AI 学習のために共有、販売、使用しません。API key のみで取得できる公開データでは、ユーザーの YouTube アカウントやユーザーが選択または登録しているチャンネルを識別できないため、より限定的なアクセスでは不十分です。StreamNexus は youtube.readonly のみを要求し、連携解除、Google token revocation、ローカル YouTube Authorized Data 削除 control を提供します。
+```
+
+## Demo video に含める内容
+
+Google Cloud Console の `Demo video: Scope usage` には、YouTube にアップロードした動画 URL を入力する。
+動画では次を明確に見せる。
+
+- App name: `StreamNexus`
+- OAuth client type: Web application
+- OAuth client ID: `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`
+- Requested scope: `https://www.googleapis.com/auth/youtube.readonly`
+- OAuth consent screen の app name と expanded permission details
+- アプリ内で YouTube read-only data を使う流れ:
+  - 初回利用前の Privacy Policy / Terms 確認
+  - Settings > Linked Accounts
+  - YouTube 連携導線
+  - YouTube account / channel selection / live metadata display のために read-only data を使う説明
+  - YouTube 連携解除、Google token revocation、local authorized-data deletion control
+
+動画を YouTube へアップロードする場合は、限定公開 URL を推奨する。アップロードや Google Cloud Console への保存は外部送信・外部状態変更なので、実行直前に確認してから行う。
 
 ## 提出用スクリーンショット
 

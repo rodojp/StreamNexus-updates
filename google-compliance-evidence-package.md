@@ -30,6 +30,7 @@ Before final submission, capture or verify these values in Google Cloud Console:
 | Terms of Service URL | `https://github.com/rodojp/StreamNexus-updates/blob/main/terms-of-service.md` |
 | YouTube scope | `https://www.googleapis.com/auth/youtube.readonly` only |
 | OAuth redirect URI | The localhost callback URI used by the packaged or dev app |
+| OAuth client | Web application client ID `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`; do not show the client secret |
 | Support email | The same support email shown on the Google OAuth consent screen |
 | Branding | No app name containing `Twitch` or `YouTube`; public name should be `StreamNexus` |
 
@@ -60,7 +61,7 @@ Recommended remaining file names:
 Current screenshot limitations:
 
 - Google Cloud Console Data Access currently still shows empty scope-justification and demo-video URL fields; do not submit until those fields are completed in Google Cloud Console.
-- The screenshots committed here intentionally crop or redact account email, account avatar, client ID, and client secret values before public publication.
+- The screenshots committed here intentionally crop or redact account email, account avatar, and client secret values before public publication. The OAuth client ID may be shown because Google asks the demo video to identify the OAuth client, but the client secret must never be shown.
 
 Each screenshot should show:
 
@@ -80,20 +81,27 @@ Current generated video:
 
 - [streamnexus-google-compliance-demo.mp4](./evidence/demo-video/streamnexus-google-compliance-demo.mp4)
 
+Scope usage text to paste in Google Cloud Console:
+
+```text
+StreamNexus uses https://www.googleapis.com/auth/youtube.readonly only to let a signed-in user view their own YouTube account data inside the desktop app. After OAuth consent, StreamNexus reads YouTube account/subscription-related data to import or select channels, monitor live-stream status, and display public video/live metadata for notifications and multiview playback. The data is shown only in the app UI and stored locally so the user can manage monitored channels. StreamNexus does not upload, edit, delete, comment on, manage videos/playlists/channels, or share/sell/use YouTube data for advertising or AI training. More limited access is insufficient because API-key-only public data cannot identify the user's YouTube account or user-selected/subscribed channels. StreamNexus requests only youtube.readonly and provides disconnect, Google token revocation, and local YouTube authorized-data deletion controls.
+```
+
 Suggested recording flow:
 
-1. Start StreamNexus.
-2. Show the pre-use policy confirmation screen.
-3. Open Settings > Linked Accounts.
-4. Click YouTube link.
-5. Show Google OAuth consent screen with app name `StreamNexus`.
-6. Expand the permission details and show `youtube.readonly`.
-7. Complete authorization.
-8. Show a YouTube feature that uses authorized read-only data, such as subscription import or channel selection.
-9. Return to Settings > Linked Accounts.
-10. Disconnect YouTube and show the confirmation.
-11. Use the local authorized-data deletion control.
-12. Show Google's third-party app access page, if requested by the reviewer.
+1. Show app details: app name `StreamNexus`, OAuth client type `Web application`, OAuth client ID `397918410949-ablo3jr6ulad92vpc08u8luph4i41lus.apps.googleusercontent.com`, and requested scope `https://www.googleapis.com/auth/youtube.readonly`.
+2. Start StreamNexus.
+3. Show the pre-use policy confirmation screen.
+4. Open Settings > Linked Accounts.
+5. Click YouTube link.
+6. Show Google OAuth consent screen with app name `StreamNexus`.
+7. Expand the permission details and show the YouTube read-only access details.
+8. Complete authorization if recording an end-to-end private demo.
+9. Show a YouTube feature that uses authorized read-only data, such as subscription import, channel selection, live status monitoring, or public video/live metadata display.
+10. Return to Settings > Linked Accounts.
+11. Disconnect YouTube and show the confirmation.
+12. Use the local authorized-data deletion control.
+13. Show Google's third-party app access page, if requested by the reviewer.
 
 ## 5. Current Engineering Controls
 
@@ -110,6 +118,6 @@ Do not submit the package until these are complete:
 - Google Cloud Console values match `StreamNexus`.
 - OAuth consent screenshots use the same OAuth client intended for review.
 - Scope screenshot is expanded and shows only the required YouTube read-only scope.
-- Demo video includes policy review, OAuth consent, YouTube feature usage, disconnect, and local deletion. If Google Cloud Console asks for a YouTube link, upload the local MP4 to the intended YouTube account and paste that URL in Google Cloud Console.
+- Demo video includes app name, OAuth client ID, policy review, OAuth consent, YouTube feature usage, disconnect, and local deletion. If Google Cloud Console asks for a YouTube link, upload the local MP4 to the intended YouTube account as an unlisted video and paste that URL in Google Cloud Console.
 - Google Cloud Console scope justification is filled in before submission.
 - Privacy Policy and Terms URLs open without 404 from a non-authenticated browser session.
