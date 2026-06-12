@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexusのプライバシーポリシーおよびYouTube API Servicesデータの取り扱い。">
+  <title>プライバシーポリシー - StreamNexus</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">StreamNexus</a>
+    <nav aria-label="メインナビゲーション">
+      <a href="/">ホーム</a>
+      <a href="/privacy/">English</a>
+      <a href="/terms/ja/">利用規約</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">プライバシーとGoogleユーザーデータ</div>
+    <h1>StreamNexus プライバシーポリシー</h1>
+    <p class="meta">発効日: 2026年6月2日 · 最終更新日: 2026年6月12日</p>
+    <p>
+      StreamNexus は、Twitch と YouTube の配信監視、通知、マルチビュー再生を行う Windows デスクトップアプリです。
+      このプライバシーポリシーは、StreamNexus が取り扱う情報と、YouTube API Services のデータ利用方法を説明します。
+    </p>
+
+    <h2>1. 適用範囲</h2>
+    <p>
+      このポリシーは、StreamNexus デスクトップアプリ、公開リリースリポジトリによる配布、および Twitch、Google、
+      YouTube 連携に適用されます。StreamNexus は、ユーザーが初期設定を開始する前、または Twitch / YouTube を
+      連携する前に、ポリシー確認画面を表示します。
+    </p>
+
+    <h2>2. StreamNexus が取り扱う情報</h2>
+    <ul>
+      <li>Twitch および YouTube のチャンネル ID、チャンネル名、プロフィール画像 URL、ライブ配信状態、公開動画メタデータ。</li>
+      <li>ユーザーが選択した追跡チャンネル、通知設定、マルチビュー設定、アプリ設定。</li>
+      <li>ユーザーの同意後に Google から発行される YouTube OAuth アクセストークンおよびリフレッシュトークン。</li>
+      <li>トラブルシューティングに必要なローカルログおよびヘルス情報。</li>
+    </ul>
+    <p>StreamNexus は、API キー、OAuth クライアントシークレット、OAuth トークンを Git に意図的に保存しない設計です。</p>
+
+    <h2>3. YouTube API Services</h2>
+    <p>
+      StreamNexus は YouTube API Services を使用します。YouTube 連携を利用する場合、
+      <a href="https://www.youtube.com/t/terms">YouTube 利用規約</a>および
+      <a href="https://policies.google.com/privacy">Google プライバシーポリシー</a>も適用されます。
+    </p>
+    <p>StreamNexus は、以下の読み取り専用 Google OAuth スコープを要求します。</p>
+    <ul>
+      <li><code>https://www.googleapis.com/auth/youtube.readonly</code></li>
+    </ul>
+    <p>StreamNexus は、このスコープを以下の目的で使用します。</p>
+    <ul>
+      <li>StreamNexus 内でユーザーの YouTube 登録チャンネルを表示するため。</li>
+      <li>追跡対象の YouTube チャンネルのライブ配信状態を確認するため。</li>
+      <li>配信監視、通知、マルチビュー再生に必要な公開動画メタデータを表示するため。</li>
+    </ul>
+    <p>StreamNexus は以下を行いません。</p>
+    <ul>
+      <li>YouTube 動画のアップロード、削除、編集。</li>
+      <li>コメントの投稿、プレイリストまたはチャンネルの管理。</li>
+      <li>YouTube API Services データの販売。</li>
+      <li>広告、信用評価、無関係なプロファイリング、AIモデル学習のためのYouTube API Servicesデータ利用。</li>
+    </ul>
+
+    <h2>4. 保存期間と保護</h2>
+    <p>
+      YouTube OAuth トークンは StreamNexus によってローカルに保存され、アプリ設定へ保存される前に暗号化されます。
+      追跡対象の YouTube チャンネルおよび公開配信メタデータは、監視、通知、履歴、マルチビュー機能を提供するために
+      必要な間ローカルへ保存されます。ユーザーがStreamNexusの操作で削除するか、ローカルアプリデータを削除するまで保持されます。
+    </p>
+    <p>StreamNexus は、YouTube API Services データを販売または再配布する本番サーバーを運用しません。</p>
+
+    <h2>5. 共有</h2>
+    <p>
+      StreamNexus は Google または YouTube ユーザーデータを販売しません。ユーザー操作、アプリ更新配信、
+      該当プラットフォームでの動画再生、トラブルシューティング、セキュリティ、または法的義務に必要な場合に限り情報を共有します。
+    </p>
+
+    <h2>6. 削除、連携解除、取り消し</h2>
+    <p>
+      ユーザーは StreamNexus の設定から YouTube 連携を解除できます。StreamNexus は保存済み Google OAuth トークンを
+      プログラムで取り消し、その後ローカル保存済み YouTube OAuth トークンを削除します。ネットワークまたはサーバーエラーにより
+      取り消しに失敗した場合、再試行できるようにローカルトークンを保持します。
+    </p>
+    <p>
+      ユーザーは、ローカルの YouTube 認可済みデータ削除機能も使用できます。この操作は、YouTube 追跡チャンネル、配信履歴、
+      視聴セッション、配信メモ、ポイント取得履歴、YouTube OAuth トークンをローカルから削除します。YouTube アカウント、
+      動画、コメント、プレイリスト、チャンネル、YouTube 側の登録チャンネル本体は削除しません。
+    </p>
+    <p>
+      ユーザーは、<a href="https://security.google.com/settings/security/permissions">Google のサードパーティ製アプリのアクセス管理ページ</a>
+      から StreamNexus のアクセス権を取り消すこともできます。すべてのローカルデータを削除するには、YouTube 連携を解除し、
+      認可済みデータ削除機能を使用した後、Windows 上の StreamNexus ローカルアプリデータを削除してください。
+    </p>
+
+    <h2>7. 変更</h2>
+    <p>
+      StreamNexus は、アプリ機能、API 利用、またはコンプライアンス要件が変わった場合、このポリシーを更新することがあります。
+      重要な変更はこのページに反映し、必要に応じてリリースノートまたはアプリ UI でも案内します。
+    </p>
+
+    <h2>8. 連絡先</h2>
+    <p>
+      プライバシーに関する質問またはデータ削除の支援が必要な場合は、StreamNexus の Google OAuth 同意画面に表示される
+      サポートメール、または公開
+      <a href="https://github.com/rodojp/StreamNexus-updates/issues">StreamNexus サポートリポジトリ</a>からお問い合わせください。
+    </p>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/">ホーム</a> · <a href="/privacy/">English</a> · <a href="/terms/ja/">利用規約</a></span>
+  </footer>
+</body>
+</html>
