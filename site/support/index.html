@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexusの動作要件、導入方法、ダウンロード検証、問い合わせ先を案内します。">
+  <title>サポート - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/support/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/support/en/">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">StreamNexus</a>
+    <nav aria-label="サポートナビゲーション">
+      <a href="/">ホーム</a>
+      <a href="/support/en/" lang="en">English</a>
+      <a href="/privacy/">プライバシー</a>
+      <a href="/terms/">利用規約</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">Support</div>
+    <h1>サポート</h1>
+    <p class="lead">導入、更新、不具合報告、ダウンロードしたファイルの確認方法を案内します。</p>
+
+    <h2>問い合わせ先</h2>
+    <p>
+      通常の質問や不具合報告は、
+      <a href="https://github.com/rodojp/StreamNexus-updates/issues">StreamNexus-updates の GitHub Issues</a>
+      で受け付けています。認証トークン、パスワード、個人情報、ログイン済み画面の画像は投稿しないでください。
+    </p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/rodojp/StreamNexus-updates/issues/new">問い合わせを作成</a>
+      <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases">リリース一覧</a>
+    </div>
+
+    <h2>動作要件</h2>
+    <ul>
+      <li>Windows 10 または Windows 11、64-bit</li>
+      <li>インターネット接続</li>
+      <li>Twitch・YouTube連携を利用する場合は、各サービスのアカウント</li>
+      <li>ベータ提供中は、Access Gateによる承認が必要になる場合があります。</li>
+    </ul>
+
+    <h2>インストールと更新</h2>
+    <ol>
+      <li><a href="https://github.com/rodojp/StreamNexus-updates/releases">公式GitHub Releases</a>からインストーラーをダウンロードします。</li>
+      <li>インストーラーを実行し、画面の案内に従います。</li>
+      <li>更新が公開された場合は、アプリ内の更新案内または公式GitHub Releasesを利用します。</li>
+      <li>アンインストールはWindowsの「インストールされているアプリ」から行います。</li>
+    </ol>
+
+    <h2>ダウンロードの整合性確認</h2>
+    <p>
+      <code>SHA256SUMS.txt</code> が添付されているリリースでは、インストーラーのSHA-256値を照合できます。
+      PowerShellで次のコマンドを実行し、表示された値が同じリリースの <code>SHA256SUMS.txt</code> と一致することを確認してください。
+    </p>
+    <p><code>Get-FileHash .\StreamNexus-Setup-&lt;version&gt;.exe -Algorithm SHA256</code></p>
+
+    <h2>不具合報告に含める情報</h2>
+    <ul>
+      <li>StreamNexusのバージョン</li>
+      <li>Windowsのバージョン</li>
+      <li>発生手順と期待した動作</li>
+      <li>再現頻度と、個人情報を除いたエラー内容</li>
+    </ul>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/">ホーム</a> · <a href="/support/en/" lang="en">English</a> · <a href="/privacy/">プライバシー</a></span>
+  </footer>
+</body>
+</html>

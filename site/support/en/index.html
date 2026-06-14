@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexus system requirements, installation, download verification, and support contacts.">
+  <title>Support - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/support/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/support/en/">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/en/">StreamNexus</a>
+    <nav aria-label="Support navigation">
+      <a href="/en/">Home</a>
+      <a href="/support/">日本語</a>
+      <a href="/privacy/en/">Privacy</a>
+      <a href="/terms/en/">Terms</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">Support</div>
+    <h1>Support</h1>
+    <p class="lead">Installation, updates, issue reporting, and download verification guidance.</p>
+
+    <h2>Contact</h2>
+    <p>
+      Use
+      <a href="https://github.com/rodojp/StreamNexus-updates/issues">GitHub Issues in StreamNexus-updates</a>
+      for general questions and bug reports. Do not post authentication tokens, passwords, personal data, or screenshots of signed-in pages.
+    </p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/rodojp/StreamNexus-updates/issues/new">Create a support issue</a>
+      <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases">View releases</a>
+    </div>
+
+    <h2>System requirements</h2>
+    <ul>
+      <li>64-bit Windows 10 or Windows 11</li>
+      <li>Internet connection</li>
+      <li>A Twitch or YouTube account when using the corresponding integration</li>
+      <li>Access Gate approval may be required while StreamNexus is in beta.</li>
+    </ul>
+
+    <h2>Install and update</h2>
+    <ol>
+      <li>Download the installer from the <a href="https://github.com/rodojp/StreamNexus-updates/releases">official GitHub Releases page</a>.</li>
+      <li>Run the installer and follow the on-screen instructions.</li>
+      <li>Use the in-app update prompt or the official GitHub Releases page when an update is available.</li>
+      <li>Uninstall StreamNexus from Windows Installed apps.</li>
+    </ol>
+
+    <h2>Verify a download</h2>
+    <p>
+      Releases that include <code>SHA256SUMS.txt</code> can be verified by comparing the installer SHA-256 value.
+      Run the following PowerShell command and compare the result with <code>SHA256SUMS.txt</code> from the same release.
+    </p>
+    <p><code>Get-FileHash .\StreamNexus-Setup-&lt;version&gt;.exe -Algorithm SHA256</code></p>
+
+    <h2>Include in a bug report</h2>
+    <ul>
+      <li>StreamNexus version</li>
+      <li>Windows version</li>
+      <li>Steps to reproduce and expected behavior</li>
+      <li>Reproduction frequency and error details with personal data removed</li>
+    </ul>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/en/">Home</a> · <a href="/support/">日本語</a> · <a href="/privacy/en/">Privacy</a></span>
+  </footer>
+</body>
+</html>
