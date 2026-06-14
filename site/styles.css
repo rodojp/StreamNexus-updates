@@ -154,6 +154,56 @@ section,
   gap: 1rem;
 }
 
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.release-badge,
+.release-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(97, 214, 164, 0.45);
+  border-radius: 999px;
+  background: rgba(97, 214, 164, 0.1);
+  color: var(--success);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+}
+
+.release-label.beta {
+  border-color: rgba(166, 186, 255, 0.45);
+  background: rgba(124, 156, 255, 0.12);
+  color: var(--accent-strong);
+}
+
+.download-card {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.download-card .button {
+  margin-top: auto;
+}
+
+.download-note {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
 .card {
   padding: 1.1rem;
   border: 1px solid var(--border);
@@ -220,6 +270,10 @@ footer {
   }
 
   .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .download-grid {
     grid-template-columns: 1fr;
   }
 }

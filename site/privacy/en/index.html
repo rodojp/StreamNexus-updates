@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexus Privacy Policy and YouTube API Services data practices.">
+  <title>Privacy Policy - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/privacy/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/privacy/en/">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">StreamNexus</a>
+    <nav aria-label="Main navigation">
+      <a href="/en/">Home</a>
+      <a href="/privacy/">日本語</a>
+      <a href="/terms/en/">Terms</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">Privacy and Google user data</div>
+    <h1>StreamNexus Privacy Policy</h1>
+    <p class="meta">Effective date: June 2, 2026 · Last updated: June 12, 2026</p>
+    <p>
+      StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications,
+      and multiview playback. This Privacy Policy explains what information StreamNexus handles and
+      how YouTube API Services data is used.
+    </p>
+
+    <h2>1. Scope</h2>
+    <p>
+      This policy applies to the StreamNexus desktop app, release distribution through the public
+      StreamNexus release repository, and Twitch, Google, and YouTube integrations. StreamNexus shows
+      a policy confirmation screen before users start initial setup or connect Twitch or YouTube.
+    </p>
+
+    <h2>2. Information StreamNexus handles</h2>
+    <ul>
+      <li>Twitch and YouTube channel IDs, channel names, profile image URLs, live stream status, and public video metadata.</li>
+      <li>User-selected tracked channels, notification settings, multiview settings, and app preferences.</li>
+      <li>YouTube OAuth access and refresh tokens issued by Google after user consent.</li>
+      <li>Local logs and health information needed for troubleshooting.</li>
+    </ul>
+    <p>StreamNexus is designed not to intentionally store API keys, OAuth client secrets, or OAuth tokens in Git.</p>
+
+    <h2>3. YouTube API Services</h2>
+    <p>
+      StreamNexus uses YouTube API Services. By using YouTube integration in StreamNexus, users also agree to
+      the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and
+      <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+    </p>
+    <p>StreamNexus requests the read-only Google OAuth scope:</p>
+    <ul>
+      <li><code>https://www.googleapis.com/auth/youtube.readonly</code></li>
+    </ul>
+    <p>StreamNexus uses this scope to:</p>
+    <ul>
+      <li>Display the user's YouTube subscriptions inside StreamNexus.</li>
+      <li>Check live stream status for tracked YouTube channels.</li>
+      <li>Display public video metadata needed for stream monitoring, notifications, and multiview playback.</li>
+    </ul>
+    <p>StreamNexus does not:</p>
+    <ul>
+      <li>Upload, delete, or edit YouTube videos.</li>
+      <li>Post comments or manage playlists or channels.</li>
+      <li>Sell YouTube API Services data.</li>
+      <li>Use YouTube API Services data for advertising, credit scoring, unrelated profiling, or AI model training.</li>
+    </ul>
+
+    <h2>4. Storage, retention, and protection</h2>
+    <p>
+      YouTube OAuth tokens are stored locally by StreamNexus and encrypted before being saved in app settings.
+      Tracked YouTube channels and public stream metadata may be stored locally while needed to provide monitoring,
+      notification, history, and multiview features. This data remains until the user removes it using StreamNexus
+      controls or deletes the local app data.
+    </p>
+    <p>StreamNexus does not operate a production server that sells or redistributes YouTube API Services data.</p>
+
+    <h2>5. Sharing</h2>
+    <p>
+      StreamNexus does not sell Google or YouTube user data. Information is shared only when required by user actions,
+      app update delivery, video playback through the relevant platform, troubleshooting, security, or legal obligations.
+    </p>
+
+    <h2>6. Deletion, disconnect, and revocation</h2>
+    <p>
+      Users can disconnect YouTube from StreamNexus settings. StreamNexus programmatically revokes the stored Google
+      OAuth token and then clears locally stored YouTube OAuth tokens. If revocation fails because of a network or
+      server error, StreamNexus keeps the local token so the user can retry revocation.
+    </p>
+    <p>
+      Users can also use the local YouTube Authorized Data deletion control. This removes locally stored YouTube tracked
+      channels, stream history, watch sessions, stream notes, claim history rows, and YouTube OAuth tokens. It does not
+      delete the user's YouTube account, videos, comments, playlists, channels, or YouTube-side subscriptions.
+    </p>
+    <p>
+      Users can revoke StreamNexus access from
+      <a href="https://security.google.com/settings/security/permissions">Google's third-party app access page</a>.
+      To remove all local StreamNexus data, users should disconnect YouTube, use the authorized-data deletion control,
+      and delete StreamNexus local app data from Windows.
+    </p>
+
+    <h2>7. Changes</h2>
+    <p>
+      StreamNexus may update this policy when app functionality, API usage, or compliance requirements change.
+      Material changes will be reflected on this page and, when appropriate, in release notes or the app UI.
+    </p>
+
+    <h2>8. Contact</h2>
+    <p>
+      For privacy questions or data deletion assistance, contact the support email displayed on the StreamNexus
+      Google OAuth consent screen or use the public
+      <a href="https://github.com/rodojp/StreamNexus-updates/issues">StreamNexus support repository</a>.
+    </p>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/en/">Home</a> · <a href="/privacy/">日本語</a> · <a href="/terms/en/">Terms</a></span>
+  </footer>
+</body>
+</html>

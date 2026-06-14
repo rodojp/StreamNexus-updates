@@ -1,122 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="StreamNexus Privacy Policy and YouTube API Services data practices.">
-  <title>Privacy Policy - StreamNexus</title>
+  <meta name="description" content="StreamNexusのプライバシーポリシーおよびYouTube API Servicesデータの取り扱い。">
+  <title>プライバシーポリシー - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/privacy/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/privacy/en/">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header>
     <a class="brand" href="/">StreamNexus</a>
-    <nav aria-label="Main navigation">
-      <a href="/">Home</a>
-      <a href="/privacy/ja/">日本語</a>
-      <a href="/terms/">Terms</a>
+    <nav aria-label="メインナビゲーション">
+      <a href="/">ホーム</a>
+      <a href="/privacy/en/" lang="en">English</a>
+      <a href="/terms/">利用規約</a>
     </nav>
   </header>
 
   <main class="policy">
-    <div class="eyebrow">Privacy and Google user data</div>
-    <h1>StreamNexus Privacy Policy</h1>
-    <p class="meta">Effective date: June 2, 2026 · Last updated: June 12, 2026</p>
+    <div class="eyebrow">プライバシーとGoogleユーザーデータ</div>
+    <h1>StreamNexus プライバシーポリシー</h1>
+    <p class="meta">発効日: 2026年6月2日 · 最終更新日: 2026年6月12日</p>
     <p>
-      StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications,
-      and multiview playback. This Privacy Policy explains what information StreamNexus handles and
-      how YouTube API Services data is used.
+      StreamNexus は、Twitch と YouTube の配信監視、通知、マルチビュー再生を行う Windows デスクトップアプリです。
+      このプライバシーポリシーは、StreamNexus が取り扱う情報と、YouTube API Services のデータ利用方法を説明します。
     </p>
 
-    <h2>1. Scope</h2>
+    <h2>1. 適用範囲</h2>
     <p>
-      This policy applies to the StreamNexus desktop app, release distribution through the public
-      StreamNexus release repository, and Twitch, Google, and YouTube integrations. StreamNexus shows
-      a policy confirmation screen before users start initial setup or connect Twitch or YouTube.
+      このポリシーは、StreamNexus デスクトップアプリ、公開リリースリポジトリによる配布、および Twitch、Google、
+      YouTube 連携に適用されます。StreamNexus は、ユーザーが初期設定を開始する前、または Twitch / YouTube を
+      連携する前に、ポリシー確認画面を表示します。
     </p>
 
-    <h2>2. Information StreamNexus handles</h2>
+    <h2>2. StreamNexus が取り扱う情報</h2>
     <ul>
-      <li>Twitch and YouTube channel IDs, channel names, profile image URLs, live stream status, and public video metadata.</li>
-      <li>User-selected tracked channels, notification settings, multiview settings, and app preferences.</li>
-      <li>YouTube OAuth access and refresh tokens issued by Google after user consent.</li>
-      <li>Local logs and health information needed for troubleshooting.</li>
+      <li>Twitch および YouTube のチャンネル ID、チャンネル名、プロフィール画像 URL、ライブ配信状態、公開動画メタデータ。</li>
+      <li>ユーザーが選択した追跡チャンネル、通知設定、マルチビュー設定、アプリ設定。</li>
+      <li>ユーザーの同意後に Google から発行される YouTube OAuth アクセストークンおよびリフレッシュトークン。</li>
+      <li>トラブルシューティングに必要なローカルログおよびヘルス情報。</li>
     </ul>
-    <p>StreamNexus is designed not to intentionally store API keys, OAuth client secrets, or OAuth tokens in Git.</p>
+    <p>StreamNexus は、API キー、OAuth クライアントシークレット、OAuth トークンを Git に意図的に保存しない設計です。</p>
 
     <h2>3. YouTube API Services</h2>
     <p>
-      StreamNexus uses YouTube API Services. By using YouTube integration in StreamNexus, users also agree to
-      the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and
-      <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+      StreamNexus は YouTube API Services を使用します。YouTube 連携を利用する場合、
+      <a href="https://www.youtube.com/t/terms">YouTube 利用規約</a>および
+      <a href="https://policies.google.com/privacy">Google プライバシーポリシー</a>も適用されます。
     </p>
-    <p>StreamNexus requests the read-only Google OAuth scope:</p>
+    <p>StreamNexus は、以下の読み取り専用 Google OAuth スコープを要求します。</p>
     <ul>
       <li><code>https://www.googleapis.com/auth/youtube.readonly</code></li>
     </ul>
-    <p>StreamNexus uses this scope to:</p>
+    <p>StreamNexus は、このスコープを以下の目的で使用します。</p>
     <ul>
-      <li>Display the user's YouTube subscriptions inside StreamNexus.</li>
-      <li>Check live stream status for tracked YouTube channels.</li>
-      <li>Display public video metadata needed for stream monitoring, notifications, and multiview playback.</li>
+      <li>StreamNexus 内でユーザーの YouTube 登録チャンネルを表示するため。</li>
+      <li>追跡対象の YouTube チャンネルのライブ配信状態を確認するため。</li>
+      <li>配信監視、通知、マルチビュー再生に必要な公開動画メタデータを表示するため。</li>
     </ul>
-    <p>StreamNexus does not:</p>
+    <p>StreamNexus は以下を行いません。</p>
     <ul>
-      <li>Upload, delete, or edit YouTube videos.</li>
-      <li>Post comments or manage playlists or channels.</li>
-      <li>Sell YouTube API Services data.</li>
-      <li>Use YouTube API Services data for advertising, credit scoring, unrelated profiling, or AI model training.</li>
+      <li>YouTube 動画のアップロード、削除、編集。</li>
+      <li>コメントの投稿、プレイリストまたはチャンネルの管理。</li>
+      <li>YouTube API Services データの販売。</li>
+      <li>広告、信用評価、無関係なプロファイリング、AIモデル学習のためのYouTube API Servicesデータ利用。</li>
     </ul>
 
-    <h2>4. Storage, retention, and protection</h2>
+    <h2>4. 保存期間と保護</h2>
     <p>
-      YouTube OAuth tokens are stored locally by StreamNexus and encrypted before being saved in app settings.
-      Tracked YouTube channels and public stream metadata may be stored locally while needed to provide monitoring,
-      notification, history, and multiview features. This data remains until the user removes it using StreamNexus
-      controls or deletes the local app data.
+      YouTube OAuth トークンは StreamNexus によってローカルに保存され、アプリ設定へ保存される前に暗号化されます。
+      追跡対象の YouTube チャンネルおよび公開配信メタデータは、監視、通知、履歴、マルチビュー機能を提供するために
+      必要な間ローカルへ保存されます。ユーザーがStreamNexusの操作で削除するか、ローカルアプリデータを削除するまで保持されます。
     </p>
-    <p>StreamNexus does not operate a production server that sells or redistributes YouTube API Services data.</p>
+    <p>StreamNexus は、YouTube API Services データを販売または再配布する本番サーバーを運用しません。</p>
 
-    <h2>5. Sharing</h2>
+    <h2>5. 共有</h2>
     <p>
-      StreamNexus does not sell Google or YouTube user data. Information is shared only when required by user actions,
-      app update delivery, video playback through the relevant platform, troubleshooting, security, or legal obligations.
-    </p>
-
-    <h2>6. Deletion, disconnect, and revocation</h2>
-    <p>
-      Users can disconnect YouTube from StreamNexus settings. StreamNexus programmatically revokes the stored Google
-      OAuth token and then clears locally stored YouTube OAuth tokens. If revocation fails because of a network or
-      server error, StreamNexus keeps the local token so the user can retry revocation.
-    </p>
-    <p>
-      Users can also use the local YouTube Authorized Data deletion control. This removes locally stored YouTube tracked
-      channels, stream history, watch sessions, stream notes, claim history rows, and YouTube OAuth tokens. It does not
-      delete the user's YouTube account, videos, comments, playlists, channels, or YouTube-side subscriptions.
-    </p>
-    <p>
-      Users can revoke StreamNexus access from
-      <a href="https://security.google.com/settings/security/permissions">Google's third-party app access page</a>.
-      To remove all local StreamNexus data, users should disconnect YouTube, use the authorized-data deletion control,
-      and delete StreamNexus local app data from Windows.
+      StreamNexus は Google または YouTube ユーザーデータを販売しません。ユーザー操作、アプリ更新配信、
+      該当プラットフォームでの動画再生、トラブルシューティング、セキュリティ、または法的義務に必要な場合に限り情報を共有します。
     </p>
 
-    <h2>7. Changes</h2>
+    <h2>6. 削除、連携解除、取り消し</h2>
     <p>
-      StreamNexus may update this policy when app functionality, API usage, or compliance requirements change.
-      Material changes will be reflected on this page and, when appropriate, in release notes or the app UI.
+      ユーザーは StreamNexus の設定から YouTube 連携を解除できます。StreamNexus は保存済み Google OAuth トークンを
+      プログラムで取り消し、その後ローカル保存済み YouTube OAuth トークンを削除します。ネットワークまたはサーバーエラーにより
+      取り消しに失敗した場合、再試行できるようにローカルトークンを保持します。
+    </p>
+    <p>
+      ユーザーは、ローカルの YouTube 認可済みデータ削除機能も使用できます。この操作は、YouTube 追跡チャンネル、配信履歴、
+      視聴セッション、配信メモ、ポイント取得履歴、YouTube OAuth トークンをローカルから削除します。YouTube アカウント、
+      動画、コメント、プレイリスト、チャンネル、YouTube 側の登録チャンネル本体は削除しません。
+    </p>
+    <p>
+      ユーザーは、<a href="https://security.google.com/settings/security/permissions">Google のサードパーティ製アプリのアクセス管理ページ</a>
+      から StreamNexus のアクセス権を取り消すこともできます。すべてのローカルデータを削除するには、YouTube 連携を解除し、
+      認可済みデータ削除機能を使用した後、Windows 上の StreamNexus ローカルアプリデータを削除してください。
     </p>
 
-    <h2>8. Contact</h2>
+    <h2>7. 変更</h2>
     <p>
-      For privacy questions or data deletion assistance, contact the support email displayed on the StreamNexus
-      Google OAuth consent screen or use the public
-      <a href="https://github.com/rodojp/StreamNexus-updates/issues">StreamNexus support repository</a>.
+      StreamNexus は、アプリ機能、API 利用、またはコンプライアンス要件が変わった場合、このポリシーを更新することがあります。
+      重要な変更はこのページに反映し、必要に応じてリリースノートまたはアプリ UI でも案内します。
+    </p>
+
+    <h2>8. 連絡先</h2>
+    <p>
+      プライバシーに関する質問またはデータ削除の支援が必要な場合は、StreamNexus の Google OAuth 同意画面に表示される
+      サポートメール、または公開
+      <a href="https://github.com/rodojp/StreamNexus-updates/issues">StreamNexus サポートリポジトリ</a>からお問い合わせください。
     </p>
   </main>
 
   <footer>
     <span>StreamNexus</span>
-    <span><a href="/">Home</a> · <a href="/privacy/ja/">日本語</a> · <a href="/terms/">Terms</a></span>
+    <span><a href="/">ホーム</a> · <a href="/privacy/en/" lang="en">English</a> · <a href="/terms/">利用規約</a></span>
   </footer>
 </body>
 </html>

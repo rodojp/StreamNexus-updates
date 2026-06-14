@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.">
+  <title>StreamNexus - Stream monitoring and multiview</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/en/">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">StreamNexus</a>
+    <nav aria-label="Main navigation">
+      <a href="#youtube-api">YouTube API usage</a>
+      <a href="#download">Download</a>
+      <a href="/privacy/en/">Privacy</a>
+      <a href="/terms/en/">Terms</a>
+      <a href="/">日本語</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Windows desktop application</div>
+      <h1>Follow live streams in one focused workspace.</h1>
+      <p class="lead">
+        StreamNexus monitors Twitch and YouTube channels, notifies users when tracked channels go live,
+        displays public stream metadata, and provides multiview playback.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#download">Download for Windows</a>
+        <a class="button" href="/privacy/en/">Read privacy policy</a>
+        <a class="button" href="/terms/en/">Read terms</a>
+      </div>
+    </div>
+
+    <section class="notice">
+      <h2>Current availability</h2>
+      <p>
+        Installers are publicly available from the GitHub release repository.
+        StreamNexus is currently in beta, and app access may require Access Gate approval.
+        Broader public availability is planned after the required platform reviews are complete.
+      </p>
+    </section>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p>
+        StreamNexus installers are distributed through the public
+        <a href="https://github.com/rodojp/StreamNexus-updates">StreamNexus-updates</a>
+        GitHub repository.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/rodojp/StreamNexus-updates/releases/download/v0.1.19/TwitchZ-Setup-0.1.19.exe">Download stable v0.1.19</a>
+        <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases/tag/v0.1.20-beta.2">View beta v0.1.20-beta.2</a>
+        <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases">View all releases</a>
+      </div>
+      <p class="muted">
+        Currently published installers may use the former TwitchZ filename.
+        Verify that the download source is <code>rodojp/StreamNexus-updates</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Core features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Live monitoring</h3>
+          <p>Track selected Twitch and YouTube channels and see their current live status.</p>
+        </article>
+        <article class="card">
+          <h3>Notifications</h3>
+          <p>Receive app notifications when a tracked channel starts a live stream.</p>
+        </article>
+        <article class="card">
+          <h3>Multiview playback</h3>
+          <p>Open multiple public streams in one desktop workspace.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="youtube-api">
+      <h2>How StreamNexus uses YouTube API Services</h2>
+      <p>
+        YouTube integration is enabled only after a user explicitly completes Google OAuth authorization.
+        StreamNexus requests only the read-only scope
+        <code>https://www.googleapis.com/auth/youtube.readonly</code>.
+      </p>
+      <ul>
+        <li>Display the authorized user's YouTube subscriptions inside StreamNexus.</li>
+        <li>Check live stream status for YouTube channels selected by the user.</li>
+        <li>Display public video metadata used for monitoring, notifications, and multiview playback.</li>
+      </ul>
+      <p>
+        StreamNexus does not upload, delete, edit, or manage YouTube videos, comments, playlists, or channels.
+        It does not sell YouTube API Services data or use it for advertising or unrelated profiling.
+      </p>
+      <div class="actions">
+        <a class="button" href="/privacy/en/">YouTube data practices</a>
+        <a class="button" href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>
+        <a class="button" href="https://policies.google.com/privacy">Google Privacy Policy</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span>
+      <a href="/privacy/en/">Privacy</a> ·
+      <a href="/terms/en/">Terms</a> ·
+      <a href="https://github.com/rodojp/StreamNexus-updates">Public repository</a> ·
+      <a href="/">日本語</a>
+    </span>
+  </footer>
+</body>
+</html>

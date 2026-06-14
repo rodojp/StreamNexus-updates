@@ -1,98 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.">
-  <title>StreamNexus - Stream monitoring and multiview</title>
+  <meta name="description" content="StreamNexusは、TwitchとYouTubeの配信監視、通知、マルチビュー再生を行うWindowsデスクトップアプリです。">
+  <title>StreamNexus - 配信監視とマルチビュー</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/en/">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header>
     <a class="brand" href="/">StreamNexus</a>
-    <nav aria-label="Main navigation">
-      <a href="#youtube-api">YouTube API usage</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/terms/">Terms</a>
-      <a href="#japanese">日本語</a>
+    <nav aria-label="メインナビゲーション">
+      <a href="#download">ダウンロード</a>
+      <a href="#youtube-api">YouTube APIの利用</a>
+      <a href="/privacy/">プライバシー</a>
+      <a href="/terms/">利用規約</a>
+      <a href="/en/" lang="en">English</a>
     </nav>
   </header>
 
   <main>
     <div class="hero">
-      <div class="eyebrow">Windows desktop application</div>
-      <h1>Follow live streams in one focused workspace.</h1>
+      <div class="eyebrow">Windows デスクトップアプリ</div>
+      <h1>見たい配信を、ひとつの画面に。</h1>
       <p class="lead">
-        StreamNexus monitors Twitch and YouTube channels, notifies users when tracked channels go live,
-        displays public stream metadata, and provides multiview playback.
+        StreamNexusは、TwitchとYouTubeのチャンネルを監視し、配信開始を通知します。
+        公開されている配信情報の確認と、複数配信のマルチビュー再生をひとつのアプリで行えます。
       </p>
       <div class="actions">
-        <a class="button primary" href="https://github.com/rodojp/StreamNexus-updates/releases">View releases</a>
-        <a class="button" href="/privacy/">Read privacy policy</a>
-        <a class="button" href="/terms/">Read terms</a>
+        <a class="button primary" href="#download">Windows版をダウンロード</a>
+        <a class="button" href="/privacy/">プライバシーポリシー</a>
+        <a class="button" href="/terms/">利用規約</a>
       </div>
     </div>
 
     <section class="notice">
-      <h2>Current availability</h2>
+      <h2>現在の提供状況</h2>
       <p>
-        StreamNexus is currently distributed as a private beta to approved external users.
-        It is not an internal-only application and is not yet publicly accessible to everyone.
-        Broader public availability is planned after the required platform reviews are complete.
+        インストーラーは公開GitHubリポジトリからダウンロードできます。
+        現在はベータ提供中のため、アプリの利用時にAccess Gateによる承認が必要になる場合があります。
+        対応サービスの審査完了後、より広い一般公開を予定しています。
+      </p>
+    </section>
+
+    <section id="download">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">GitHub Releases</div>
+          <h2>ダウンロード</h2>
+        </div>
+        <span class="release-badge">Windows</span>
+      </div>
+      <p>
+        StreamNexusのインストーラーは、公開リポジトリ
+        <a href="https://github.com/rodojp/StreamNexus-updates">StreamNexus-updates</a>
+        のGitHub Releasesから配布しています。
+      </p>
+      <div class="download-grid">
+        <article class="card download-card">
+          <span class="release-label">安定版</span>
+          <h3>v0.1.19</h3>
+          <p>通常利用向けの最新安定版です。</p>
+          <a class="button primary" href="https://github.com/rodojp/StreamNexus-updates/releases/download/v0.1.19/TwitchZ-Setup-0.1.19.exe">インストーラーをダウンロード</a>
+        </article>
+        <article class="card download-card">
+          <span class="release-label beta">ベータ版</span>
+          <h3>v0.1.20-beta.2</h3>
+          <p>最新機能を含むテスト版です。動作が不安定な場合があります。</p>
+          <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases/tag/v0.1.20-beta.2">ベータ版を確認</a>
+        </article>
+      </div>
+      <div class="actions">
+        <a class="button" href="https://github.com/rodojp/StreamNexus-updates/releases">すべてのリリースを見る</a>
+        <a class="button" href="https://github.com/rodojp/StreamNexus-updates">公開リポジトリを見る</a>
+      </div>
+      <p class="muted download-note">
+        現在公開中のインストーラーには、旧名称「TwitchZ」のファイル名が表示される場合があります。
+        配布元が <code>rodojp/StreamNexus-updates</code> であることを確認してください。
       </p>
     </section>
 
     <section>
-      <h2>Core features</h2>
+      <h2>主な機能</h2>
       <div class="grid">
         <article class="card">
-          <h3>Live monitoring</h3>
-          <p>Track selected Twitch and YouTube channels and see their current live status.</p>
+          <h3>ライブ配信監視</h3>
+          <p>登録したTwitch・YouTubeチャンネルの配信状況を確認できます。</p>
         </article>
         <article class="card">
-          <h3>Notifications</h3>
-          <p>Receive app notifications when a tracked channel starts a live stream.</p>
+          <h3>配信開始通知</h3>
+          <p>登録チャンネルが配信を開始した際に、アプリから通知を受け取れます。</p>
         </article>
         <article class="card">
-          <h3>Multiview playback</h3>
-          <p>Open multiple public streams in one desktop workspace.</p>
+          <h3>マルチビュー再生</h3>
+          <p>複数の公開配信をひとつのデスクトップ画面で視聴できます。</p>
         </article>
       </div>
     </section>
 
     <section id="youtube-api">
-      <h2>How StreamNexus uses YouTube API Services</h2>
+      <h2>YouTube API Servicesの利用方法</h2>
       <p>
-        YouTube integration is enabled only after a user explicitly completes Google OAuth authorization.
-        StreamNexus requests only the read-only scope
-        <code>https://www.googleapis.com/auth/youtube.readonly</code>.
+        YouTube連携は、ユーザーがGoogle OAuthによる認可を明示的に完了した場合にのみ有効になります。
+        StreamNexusが要求するスコープは、読み取り専用の
+        <code>https://www.googleapis.com/auth/youtube.readonly</code>
+        のみです。
       </p>
       <ul>
-        <li>Display the authorized user's YouTube subscriptions inside StreamNexus.</li>
-        <li>Check live stream status for YouTube channels selected by the user.</li>
-        <li>Display public video metadata used for monitoring, notifications, and multiview playback.</li>
+        <li>認可したユーザーのYouTube登録チャンネルをStreamNexus内に表示します。</li>
+        <li>ユーザーが選択したYouTubeチャンネルのライブ配信状況を確認します。</li>
+        <li>配信監視、通知、マルチビュー再生に必要な公開動画メタデータを表示します。</li>
       </ul>
       <p>
-        StreamNexus does not upload, delete, edit, or manage YouTube videos, comments, playlists, or channels.
-        It does not sell YouTube API Services data or use it for advertising or unrelated profiling.
+        StreamNexusは、YouTube動画、コメント、再生リスト、チャンネルのアップロード、削除、編集、管理を行いません。
+        YouTube API Servicesのデータを販売、広告利用、無関係なプロファイリングに使用することもありません。
       </p>
       <div class="actions">
-        <a class="button" href="/privacy/">YouTube data practices</a>
-        <a class="button" href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>
-        <a class="button" href="https://policies.google.com/privacy">Google Privacy Policy</a>
-      </div>
-    </section>
-
-    <section id="japanese">
-      <h2>日本語でのご案内</h2>
-      <p>
-        StreamNexus は、Twitch と YouTube の配信監視、通知、公開動画メタデータ表示、
-        マルチビュー再生を行う Windows デスクトップアプリです。
-        現在は承認された外部ユーザー向けのプライベートベータとして配布しています。
-      </p>
-      <div class="actions">
-        <a class="button" href="/privacy/ja/">プライバシーポリシー</a>
-        <a class="button" href="/terms/ja/">利用規約</a>
+        <a class="button" href="/privacy/">YouTubeデータの取り扱い</a>
+        <a class="button" href="https://www.youtube.com/t/terms">YouTube利用規約</a>
+        <a class="button" href="https://policies.google.com/privacy">Googleプライバシーポリシー</a>
       </div>
     </section>
   </main>
@@ -100,9 +128,10 @@
   <footer>
     <span>StreamNexus</span>
     <span>
-      <a href="/privacy/">Privacy</a> ·
-      <a href="/terms/">Terms</a> ·
-      <a href="https://github.com/rodojp/StreamNexus-updates">Public repository</a>
+      <a href="/privacy/">プライバシー</a> ·
+      <a href="/terms/">利用規約</a> ·
+      <a href="https://github.com/rodojp/StreamNexus-updates">公開リポジトリ</a> ·
+      <a href="/en/" lang="en">English</a>
     </span>
   </footer>
 </body>
