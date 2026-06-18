@@ -15,7 +15,7 @@ Replace every `<PLACEHOLDER>` before sending. Do not state that an action is com
 - The current demo recording is suitable for both review teams after it is uploaded as an accessible unlisted video.
 - The current demo recording shows the complete OAuth consent screen and permission details in English.
 - The current demo recording also shows YouTube disconnect, Google OAuth token revocation, and local YouTube Authorized Data deletion.
-- As of 2026-06-18, the uploaded YouTube demo at `https://www.youtube.com/watch?v=VrA-SknfniM` has no YouTube caption track. Upload `evidence/demo-video/youtube-api-quota-review-subtitles-en.srt` in YouTube Studio before sending the quota response.
+- As of 2026-06-18, the uploaded YouTube demo at `https://www.youtube.com/watch?v=VrA-SknfniM` has an English caption track.
 - Before sending either reply, confirm the saved Google Cloud Console values and confirm that the Search Console verified owner account is also a Project Owner or Editor for project `autogpt-385607`.
 
 ## Draft A: YouTube API Services Team
@@ -60,10 +60,11 @@ Approximate video guide:
 
 Public launch timeline:
 - 2026-06-18: StreamNexus is available as a private beta for approved external users. The owned-domain homepage, Privacy Policy, Terms of Service, and support pages are live at stream-nexus.com.
-- 2026-06-18: English subtitles are being added to the submitted demo video for this follow-up response.
-- 2026-06-28: We plan to complete reviewer-requested follow-up materials and any remaining Cloud Console review updates.
-- 2026-07-10: We plan to finalize the public release candidate, including installer signing and release checks.
-- 2026-07-24: Target public launch date for the Windows desktop app with the YouTube features shown in the screencast, including YouTube account linking, subscription display, selected-channel tracking, live-status monitoring, notifications, public video metadata display, and multiview playback. If Google OAuth verification or quota approval completes after this date, public launch will move to within five business days after the required approvals are granted.
+- 2026-06-18: English subtitles have been added to the submitted demo video for this follow-up response.
+- 2026-06-30: We plan to complete the current reviewer-requested follow-up materials and Cloud Console review updates.
+- 2026-09-30: We plan to continue private beta testing, stability improvements, installer and release checks, and any additional reviewer-requested compliance updates.
+- 2026-11-30: We plan to prepare the public release candidate with the YouTube features shown in the screencast.
+- 2026-12-31: Target public launch window for the Windows desktop app with the YouTube features shown in the screencast, including YouTube account linking, subscription display, selected-channel tracking, live-status monitoring, notifications, public video metadata display, and multiview playback. If Google OAuth verification or quota approval completes after this launch window, public launch will move to after the required approvals are granted.
 
 Homepage: https://stream-nexus.com/
 Privacy Policy: https://stream-nexus.com/privacy/
