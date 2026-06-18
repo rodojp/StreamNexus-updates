@@ -1,8 +1,22 @@
 # Google / YouTube Review Response Drafts
 
-Last updated: 2026-06-11
+Last updated: 2026-06-18
 
 Replace every `<PLACEHOLDER>` before sending. Do not state that an action is complete until it has been verified.
+
+## Current Readiness
+
+- The owned-domain homepage, Privacy Policy, and Terms of Service are publicly accessible:
+  - Homepage: <https://stream-nexus.com/>
+  - Privacy Policy: <https://stream-nexus.com/privacy/>
+  - Terms of Service: <https://stream-nexus.com/terms/>
+- The homepage links to the same Privacy Policy URL intended for the OAuth consent screen.
+- The root domain publishes a Google Search Console verification TXT record.
+- The current demo recording is suitable for both review teams after it is uploaded as an accessible unlisted video.
+- The current demo recording shows the complete OAuth consent screen and permission details in English.
+- The current demo recording also shows YouTube disconnect, Google OAuth token revocation, and local YouTube Authorized Data deletion.
+- As of 2026-06-18, the uploaded YouTube demo at `https://www.youtube.com/watch?v=VrA-SknfniM` has no YouTube caption track. Upload `evidence/demo-video/youtube-api-quota-review-subtitles-en.srt` in YouTube Studio before sending the quota response.
+- Before sending either reply, confirm the saved Google Cloud Console values and confirm that the Search Console verified owner account is also a Project Owner or Editor for project `autogpt-385607`.
 
 ## Draft A: YouTube API Services Team
 
@@ -11,9 +25,9 @@ Subject: Re: YouTube API Services review for project 397918410949
 ```text
 Hello YouTube API Services Team,
 
-Thank you for your response. We have prepared a new detailed screencast showing how StreamNexus uses YouTube API Services:
+Thank you for your response. We have prepared a detailed step-by-step screencast showing how StreamNexus uses YouTube API Services and have added English subtitles to the video:
 
-<UNLISTED_YOUTUBE_DEMO_VIDEO_URL>
+https://www.youtube.com/watch?v=VrA-SknfniM
 
 StreamNexus is a Windows desktop application for Twitch and YouTube stream monitoring, notifications, and multiview playback.
 
@@ -26,20 +40,38 @@ The YouTube API usage shown in the screencast is:
 3. StreamNexus calls subscriptions.list with mine=true to display the authorized user's YouTube subscriptions.
 4. The user explicitly selects which subscribed channels to track. StreamNexus does not automatically monitor every subscription.
 5. StreamNexus checks the selected tracked channels for live-stream status and confirms candidate live videos using public YouTube video metadata.
-6. When a selected tracked channel changes to live, StreamNexus displays the live stream in the app and can provide an in-app notification, desktop notification, notification-history entry, or configured auto-open behavior.
+6. StreamNexus informs the user through the tracked-channel live count and live-status channel cards shown in the screencast. When a selected tracked channel changes to live, StreamNexus can also provide an in-app notification, desktop notification, notification-history entry, or configured auto-open behavior.
 7. StreamNexus displays public metadata needed for monitoring and playback, including the channel name, stream title, thumbnail, start time, live status, watch URL, and available viewer information.
 
 StreamNexus does not upload, edit, delete, comment on, or manage YouTube videos, playlists, channels, or comments.
 
 The screencast also demonstrates the in-app YouTube disconnect flow, Google OAuth token revocation, and local YouTube Authorized Data deletion control.
 
-Homepage: <OWNED_DOMAIN_HOMEPAGE_URL>
-Privacy Policy: <OWNED_DOMAIN_PRIVACY_POLICY_URL>
+Approximate video guide:
+- 0:00 - StreamNexus purpose and YouTube API Services scope.
+- 0:07 - Owned-domain homepage, Privacy Policy, and Terms of Service.
+- 0:17 - In-app policy notice and user-started YouTube account linking.
+- 0:32 - Google OAuth flow for StreamNexus.
+- 0:48 - English permission details for the YouTube read-only scope.
+- 1:08 - Authorized subscriptions and user-selected channel tracking.
+- 1:23 - YouTube live-status display, notification behavior, and public video metadata.
+- 1:40 - Multiview playback using the public YouTube watch page/metadata.
+- 1:52 - YouTube disconnect, Google OAuth token revocation, and local Authorized Data deletion.
+
+Public launch timeline:
+- 2026-06-18: StreamNexus is available as a private beta for approved external users. The owned-domain homepage, Privacy Policy, Terms of Service, and support pages are live at stream-nexus.com.
+- 2026-06-18: English subtitles are being added to the submitted demo video for this follow-up response.
+- 2026-06-28: We plan to complete reviewer-requested follow-up materials and any remaining Cloud Console review updates.
+- 2026-07-10: We plan to finalize the public release candidate, including installer signing and release checks.
+- 2026-07-24: Target public launch date for the Windows desktop app with the YouTube features shown in the screencast, including YouTube account linking, subscription display, selected-channel tracking, live-status monitoring, notifications, public video metadata display, and multiview playback. If Google OAuth verification or quota approval completes after this date, public launch will move to within five business days after the required approvals are granted.
+
+Homepage: https://stream-nexus.com/
+Privacy Policy: https://stream-nexus.com/privacy/
 
 Please let us know if you need any additional information or reviewer access instructions.
 
 Thank you,
-<NAME>
+StreamNexus Developer
 ```
 
 ## Draft B: Google Third Party Data Safety Team
@@ -49,26 +81,33 @@ Subject: Re: Verification request for project 397918410949 / autogpt-385607
 ```text
 Hello Third Party Data Safety Team,
 
-Thank you for your review. We have addressed the requested items for project 397918410949 (Project ID: autogpt-385607).
+Thank you for your review. We updated the StreamNexus Privacy Policy for project 397918410949 (Project ID: autogpt-385607) to include explicit data protection mechanisms for Google user data and sensitive data.
 
-1. We moved the StreamNexus application homepage and Privacy Policy to a domain owned by the developer:
-   Homepage: <OWNED_DOMAIN_HOMEPAGE_URL>
-   Privacy Policy: <OWNED_DOMAIN_PRIVACY_POLICY_URL>
-   Terms of Service: <OWNED_DOMAIN_TERMS_URL>
+Updated Privacy Policy:
+https://stream-nexus.com/privacy/
 
-2. We verified ownership of <OWNED_DOMAIN> in Google Search Console using an account that is also a Project Owner for the Cloud project.
+English version:
+https://stream-nexus.com/privacy/en/
 
-3. We updated the homepage, Privacy Policy, Terms of Service, and authorized domain values in Google Cloud Console.
+The updated Privacy Policy now states that:
 
-4. We created a new detailed demo video that shows the complete OAuth grant process and the StreamNexus functionality that uses the requested YouTube read-only scope:
-   <UNLISTED_YOUTUBE_DEMO_VIDEO_URL>
+1. YouTube OAuth access and refresh tokens are stored on the user's Windows device and encrypted before persistence.
+2. Local app data is protected by the user's Windows account and local file-system permissions.
+3. OAuth tokens are transmitted only to Google OAuth and YouTube API endpoints when needed for token exchange, token refresh, token revocation, and authorized YouTube API calls.
+4. StreamNexus uses HTTPS for communication with Google OAuth, YouTube API, update, and support endpoints.
+5. StreamNexus is designed not to intentionally store API keys, OAuth client secrets, OAuth tokens, or other sensitive credentials in Git.
+6. Local logs and health information are used only for troubleshooting, and users are instructed not to publicly share logs that may contain personal data, account identifiers, tokens, or other sensitive information.
+7. Users can disconnect YouTube, revoke Google OAuth access, and delete locally stored YouTube Authorized Data.
 
-The video demonstrates the complete English OAuth consent screen, the authorized subscription list, user-selected channel tracking, YouTube live-status monitoring and notifications, public video/live metadata display, disconnect and token revocation, and local YouTube Authorized Data deletion.
+The Privacy Policy URL remains:
+https://stream-nexus.com/privacy/
 
-Please continue the verification review. Let us know if any additional information or reviewer access instructions are required.
+We updated and resubmitted the app in Cloud Console with this Privacy Policy URL. Please continue the verification review.
+
+Please let us know if any additional information is required.
 
 Thank you,
-<NAME>
+StreamNexus Developer
 ```
 
 ## Pre-Send Checklist
@@ -76,8 +115,14 @@ Thank you,
 - [ ] Every placeholder has been replaced.
 - [ ] Owned-domain pages open without login in a private browser window.
 - [ ] Search Console ownership is verified by the correct Cloud project Owner account.
-- [ ] Cloud Console Branding and authorized domain values match the live URLs.
+- [ ] Google Cloud Console Branding values exactly match `https://stream-nexus.com/`, `https://stream-nexus.com/privacy/`, and `https://stream-nexus.com/terms/`.
+- [ ] Google Cloud Console authorized domains contain `stream-nexus.com` and do not rely on `github.com`.
+- [ ] The live Privacy Policy includes explicit Google user data protection mechanisms: encryption, local device storage, Windows account/file-system permissions, HTTPS, limited Google/YouTube endpoint transmission, credential handling, log handling, and deletion/revocation controls.
+- [ ] Google Cloud Console has been updated and resubmitted after the Privacy Policy update.
 - [ ] The final video URL is an accessible unlisted YouTube URL.
-- [ ] The video uses the submitted OAuth client and shows the complete English consent screen.
+- [ ] English subtitles are uploaded to the YouTube video and visible from the YouTube player captions menu.
+- [ ] The OAuth verification video uses the submitted OAuth client and shows the complete consent screen in English.
+- [ ] The claims in each reply match what is actually shown in the linked video.
+- [ ] If the launch date changes, update the public launch timeline before sending the YouTube API Services Team reply.
 - [ ] Reviewer access instructions are included if the private-beta access gate blocks review.
 - [ ] Reply is sent directly in each original reviewer email thread.

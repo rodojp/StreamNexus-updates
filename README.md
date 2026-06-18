@@ -8,24 +8,23 @@ YouTube 連携を使う場合は、Google Privacy Policy と YouTube Terms of Se
 
 ## Public URLs
 
-- App home: <https://github.com/rodojp/StreamNexus-updates>
+- App home: <https://stream-nexus.com/>
 - Releases: <https://github.com/rodojp/StreamNexus-updates/releases>
-- Privacy Policy: <https://github.com/rodojp/StreamNexus-updates/blob/main/privacy-policy.md>
-- Privacy Policy, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/privacy-policy.ja.md>
-- Terms of Service: <https://github.com/rodojp/StreamNexus-updates/blob/main/terms-of-service.md>
-- Terms of Service, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/terms-of-service.ja.md>
+- Support: <https://stream-nexus.com/support/>
+- Privacy Policy: <https://stream-nexus.com/privacy/>
+- Privacy Policy, English: <https://stream-nexus.com/privacy/en/>
+- Terms of Service: <https://stream-nexus.com/terms/>
+- Terms of Service, English: <https://stream-nexus.com/terms/en/>
+- Public release repository: <https://github.com/rodojp/StreamNexus-updates>
 - Google Privacy Policy: <https://policies.google.com/privacy>
 - YouTube Terms of Service: <https://www.youtube.com/t/terms>
 
-## Google Compliance Materials
+## Google / YouTube Compliance Materials
 
-- YouTube OAuth submission notes: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-cloud-youtube-oauth-submission.md>
 - Architecture and user flows: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.md>
 - Architecture and user flows, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-architecture-and-flows.ja.md>
-- Evidence package checklist: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-evidence-package.md>
-- Evidence package checklist, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/google-compliance-evidence-package.ja.md>
-- Pre-submission compliance review: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.md>
-- Pre-submission compliance review, Japanese: <https://github.com/rodojp/StreamNexus-updates/blob/main/pre-submission-compliance-review.ja.md>
+- Screenshot evidence: <https://github.com/rodojp/StreamNexus-updates/tree/main/evidence/screenshots>
+- Demo video evidence: <https://github.com/rodojp/StreamNexus-updates/tree/main/evidence/demo-video>
 
 ## Diagram Assets
 

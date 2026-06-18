@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:07,000
+StreamNexus is a Windows desktop app for Twitch and YouTube stream monitoring, notifications, and multiview playback.
+
+2
+00:00:07,000 --> 00:00:17,000
+The StreamNexus homepage, Privacy Policy, and Terms of Service are hosted on the developer-owned domain stream-nexus.com.
+
+3
+00:00:17,000 --> 00:00:32,000
+Before YouTube account linking, the user reviews the app policy notice. YouTube API access starts only when the user chooses to connect YouTube.
+
+4
+00:00:32,000 --> 00:00:48,000
+The app opens the Google OAuth flow for StreamNexus. The user chooses whether to grant access to the submitted OAuth client.
+
+5
+00:00:48,000 --> 00:01:08,000
+StreamNexus requests only the read-only YouTube scope: youtube.readonly. The app does not upload, edit, delete, comment on, or manage YouTube content.
+
+6
+00:01:08,000 --> 00:01:23,000
+After authorization, StreamNexus uses YouTube API Services to display the user's YouTube subscriptions and lets the user choose which channels to track.
+
+7
+00:01:23,000 --> 00:01:40,000
+For selected channels, StreamNexus checks live-stream status and displays public video metadata such as channel name, title, thumbnail, live status, and watch URL.
+
+8
+00:01:40,000 --> 00:01:52,000
+The user can open a tracked YouTube stream in multiview playback. StreamNexus displays the public YouTube watch page and related public stream metadata.
+
+9
+00:01:52,000 --> 00:02:05,000
+The user can disconnect YouTube, revoke the Google OAuth token, and delete locally stored YouTube authorized data from StreamNexus.

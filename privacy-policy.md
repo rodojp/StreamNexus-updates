@@ -1,7 +1,7 @@
 # StreamNexus Privacy Policy
 
 Effective date: 2026-06-02
-Last updated: 2026-06-04
+Last updated: 2026-06-18
 
 [日本語版はこちら / Japanese translation](./privacy-policy.ja.md)
 
@@ -53,6 +53,15 @@ StreamNexus does not:
 
 YouTube OAuth tokens are stored locally by StreamNexus and encrypted before being saved in app settings.
 Tracked YouTube channels and public stream metadata may be stored locally to provide monitoring, notification, history, and multiview features.
+
+StreamNexus uses security procedures to protect the confidentiality of Google user data handled by the app:
+
+- YouTube OAuth access and refresh tokens are stored on the user's Windows device and encrypted before persistence.
+- Local app data is protected by the user's Windows account and local file-system permissions.
+- OAuth tokens are transmitted only to Google OAuth and YouTube API endpoints when needed for token exchange, token refresh, token revocation, and authorized YouTube API calls.
+- StreamNexus uses HTTPS for communication with Google OAuth, YouTube API, update, and support endpoints.
+- StreamNexus is designed not to intentionally store API keys, OAuth client secrets, OAuth tokens, or other sensitive credentials in Git.
+- Local logs and health information are used for troubleshooting. Users should not publicly share logs that may contain personal data, account identifiers, tokens, or other sensitive information; such details should be redacted before sharing support material.
 
 StreamNexus does not operate a production server that sells or redistributes YouTube API Services data.
 
