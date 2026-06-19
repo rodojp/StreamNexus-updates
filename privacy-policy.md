@@ -20,6 +20,7 @@ StreamNexus may handle the following information and uses it only for the purpos
 - Twitch and YouTube channel IDs, channel names, profile image URLs, live stream status, thumbnails, titles, scheduled or actual live times, watch URLs, and other public video metadata needed to show stream lists, notifications, history, and multiview playback.
 - The user's YouTube subscriptions returned by YouTube API Services after OAuth consent. StreamNexus displays this information so the user can choose which channels to monitor.
 - User-selected tracked channels, notification settings, multiview layout settings, audio settings, app preferences, and policy confirmation state.
+- If the contact form is used, the name, reply email address, inquiry category, message, and minimal technical information needed for abuse prevention and troubleshooting, such as User-Agent and Cloudflare Ray ID.
 - YouTube OAuth access token and refresh token issued by Google after user consent. These tokens are used only to call authorized YouTube API Services, refresh access, or revoke access.
 - Local logs and health information needed for troubleshooting, such as app version, local runtime state, and non-secret diagnostic messages.
 
@@ -64,6 +65,7 @@ YouTube OAuth tokens are stored locally by StreamNexus and encrypted before bein
 Tracked YouTube channels and public stream metadata may be stored locally to provide monitoring, notification, history, and multiview features.
 YouTube API Services data that is displayed or stored by StreamNexus is refreshed, updated, or deleted within 30 days where required by the YouTube API Services Developer Policies.
 Users can also delete locally stored YouTube authorized data at any time from StreamNexus settings.
+Information submitted through the contact form is used for support, replies, abuse prevention, and record review, and is retained only as long as needed for those purposes.
 
 StreamNexus uses security procedures to protect the confidentiality of Google user data handled by the app:
 

@@ -2,9 +2,21 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "stream-nexus",
   "compatibility_date": "2026-06-12",
+  "main": "./src/worker.js",
+  "keep_vars": true,
   "assets": {
     "directory": "./site",
+    "binding": "ASSETS",
     "html_handling": "force-trailing-slash",
     "not_found_handling": "404-page"
+  },
+  "d1_databases": [
+    {
+      "binding": "CONTACT_DB",
+      "database_name": "stream-nexus-contact"
+    }
+  ],
+  "vars": {
+    "CONTACT_RETENTION_DAYS": "180"
   }
 }

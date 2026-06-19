@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact form for StreamNexus.">
+  <title>Contact - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/contact/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/contact/en/">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/en/">StreamNexus</a>
+    <nav aria-label="Contact navigation">
+      <a href="/en/">Home</a>
+      <a href="/contact/">日本語</a>
+      <a href="/support/en/">Support</a>
+      <a href="/privacy/en/">Privacy</a>
+      <a href="/terms/en/">Terms</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">Contact</div>
+    <h1>Contact</h1>
+    <p class="lead">
+      Use this form for general questions, bug reports, privacy questions, or data deletion requests.
+      Do not submit security-sensitive reports here. Email
+      <a href="mailto:security@stream-nexus.com">security@stream-nexus.com</a>
+      instead.
+    </p>
+
+    <form id="contact-form" class="contact-form" data-locale="en">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label>
+        Category
+        <select name="category" required>
+          <option value="general">General question</option>
+          <option value="bug">Bug report</option>
+          <option value="privacy">Privacy</option>
+          <option value="deletion">Data deletion</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label>
+        Name optional
+        <input type="text" name="name" maxlength="120" autocomplete="name">
+      </label>
+
+      <label>
+        Reply email address
+        <input type="email" name="email" maxlength="254" autocomplete="email" required>
+      </label>
+
+      <label>
+        Message
+        <textarea name="message" rows="9" maxlength="4000" required placeholder="Include the app version, steps to reproduce, and relevant details."></textarea>
+      </label>
+
+      <div id="turnstile-container" class="turnstile-container"></div>
+      <p class="muted">
+        Do not send authentication tokens, passwords, personal data, or screenshots of signed-in pages.
+      </p>
+
+      <button class="button primary" type="submit" disabled>Submit</button>
+      <p id="contact-status" class="form-status" role="status" aria-live="polite">Preparing the form.</p>
+    </form>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/en/">Home</a> · <a href="/contact/">日本語</a> · <a href="/support/en/">Support</a></span>
+  </footer>
+
+  <script src="/contact/contact-form.js"></script>
+</body>
+</html>

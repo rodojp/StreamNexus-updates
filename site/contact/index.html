@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamNexusへの問い合わせフォーム。">
+  <title>問い合わせ - StreamNexus</title>
+  <link rel="alternate" hreflang="ja" href="https://stream-nexus.com/contact/">
+  <link rel="alternate" hreflang="en" href="https://stream-nexus.com/contact/en/">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">StreamNexus</a>
+    <nav aria-label="問い合わせナビゲーション">
+      <a href="/">ホーム</a>
+      <a href="/contact/en/" lang="en">English</a>
+      <a href="/support/">サポート</a>
+      <a href="/privacy/">プライバシー</a>
+      <a href="/terms/">利用規約</a>
+    </nav>
+  </header>
+
+  <main class="policy">
+    <div class="eyebrow">Contact</div>
+    <h1>問い合わせ</h1>
+    <p class="lead">
+      StreamNexusへの一般的な問い合わせ、不具合報告、プライバシーまたはデータ削除に関する連絡に使用できます。
+      セキュリティ・脆弱性報告は公開フォームではなく
+      <a href="mailto:security@stream-nexus.com">security@stream-nexus.com</a>
+      へ送信してください。
+    </p>
+
+    <form id="contact-form" class="contact-form" data-locale="ja">
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label>
+        問い合わせ種別
+        <select name="category" required>
+          <option value="general">一般問い合わせ</option>
+          <option value="bug">不具合報告</option>
+          <option value="privacy">プライバシー</option>
+          <option value="deletion">データ削除</option>
+          <option value="other">その他</option>
+        </select>
+      </label>
+
+      <label>
+        名前 任意
+        <input type="text" name="name" maxlength="120" autocomplete="name">
+      </label>
+
+      <label>
+        返信先メールアドレス
+        <input type="email" name="email" maxlength="254" autocomplete="email" required>
+      </label>
+
+      <label>
+        内容
+        <textarea name="message" rows="9" maxlength="4000" required placeholder="発生している問題、利用中のバージョン、再現手順などを記載してください。"></textarea>
+      </label>
+
+      <div id="turnstile-container" class="turnstile-container"></div>
+      <p class="muted">
+        認証トークン、パスワード、個人情報、ログイン済み画面の画像は送信しないでください。
+      </p>
+
+      <button class="button primary" type="submit" disabled>送信する</button>
+      <p id="contact-status" class="form-status" role="status" aria-live="polite">フォームを準備しています。</p>
+    </form>
+  </main>
+
+  <footer>
+    <span>StreamNexus</span>
+    <span><a href="/">ホーム</a> · <a href="/contact/en/" lang="en">English</a> · <a href="/support/">サポート</a></span>
+  </footer>
+
+  <script src="/contact/contact-form.js"></script>
+</body>
+</html>
