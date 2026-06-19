@@ -1,7 +1,7 @@
 # StreamNexus Privacy Policy
 
 Effective date: 2026-06-02
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 [日本語版はこちら / Japanese translation](./privacy-policy.ja.md)
 
@@ -105,7 +105,10 @@ Material changes will be reflected on this page and, when appropriate, in releas
 
 ## 9. Contact
 
-For privacy questions, YouTube API Services data questions, or data deletion assistance, contact:
+For privacy questions, YouTube API Services data questions, data deletion assistance, app support, or security reports, contact:
 
-- Email: <tkktgtr35@gmail.com>
+- General contact: <info@stream-nexus.com>
+- Privacy / YouTube API Services data / data deletion: <privacy@stream-nexus.com>
+- App support: <support@stream-nexus.com>
+- Security and vulnerability reports: <security@stream-nexus.com>
 - GitHub support: <https://github.com/rodojp/StreamNexus-updates/issues>
