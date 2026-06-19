@@ -16,7 +16,12 @@ export default {
     }
 
     if (url.pathname === "/api/contact" && request.method === "POST") {
-      return handleContactSubmit(request, env);
+      try {
+        return await handleContactSubmit(request, env);
+      } catch (error) {
+        logContactError("contact_submit_unhandled", request, error);
+        return jsonResponse({ error: "internal_error" }, 500);
+      }
     }
 
     if (url.pathname.startsWith("/api/")) {
@@ -171,6 +176,20 @@ async function verifyTurnstile(token, env, request) {
   if (!result.success) return { ok: false };
   if (result.action && result.action !== "contact") return { ok: false };
   return { ok: true };
+}
+
+function logContactError(event, request, error) {
+  const url = new URL(request.url);
+  console.error(
+    JSON.stringify({
+      event,
+      path: url.pathname,
+      method: request.method,
+      cfRay: request.headers.get("cf-ray") || null,
+      errorName: error instanceof Error ? error.name : "UnknownError",
+      errorMessage: error instanceof Error ? error.message : String(error),
+    })
+  );
 }
 
 async function ensureContactSchema(db) {
