@@ -10,7 +10,8 @@
       unavailable: "問い合わせフォームは現在準備中です。support@stream-nexus.com へメールで連絡してください。",
       ready: "入力後、送信できます。",
       sending: "送信しています。",
-      success: "問い合わせを受け付けました。参照ID: ",
+      successPrefix: "問い合わせを受け付けました。参照ID: ",
+      successSuffix: " この参照IDを控えてください。返信が必要な場合は support@stream-nexus.com から連絡します。",
       failure: "送信できませんでした。時間を置いて再試行するか、support@stream-nexus.com へ連絡してください。",
       turnstile: "Turnstile の確認が完了していません。",
     },
@@ -18,7 +19,8 @@
       unavailable: "The contact form is not ready yet. Email support@stream-nexus.com instead.",
       ready: "Fill in the form to submit.",
       sending: "Submitting.",
-      success: "Your message was received. Reference ID: ",
+      successPrefix: "Your message was received. Reference ID: ",
+      successSuffix: " Please keep this reference ID. If a reply is needed, StreamNexus support will contact you from support@stream-nexus.com.",
       failure: "The message could not be submitted. Try again later or email support@stream-nexus.com.",
       turnstile: "Turnstile verification is not complete.",
     },
@@ -95,7 +97,7 @@
       if (!response.ok || !result.ok) throw new Error("submit_failed");
 
       form.reset();
-      status.textContent = text.success + result.referenceId;
+      status.textContent = text.successPrefix + result.referenceId + text.successSuffix;
       turnstileToken = "";
       if (window.turnstile) window.turnstile.reset(turnstileContainer);
     } catch {

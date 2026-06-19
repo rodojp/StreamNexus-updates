@@ -52,3 +52,63 @@ D1 には以下を保存します。
 - 対応ステータス
 
 添付ファイル、自動返信、管理画面は初期版では未実装です。
+
+## 無料枠での運用方針
+
+Cloudflare Email Sending は Workers Paid が必要なため、初期運用では通知メールを送信しません。
+問い合わせは D1 に保存し、Cloudflare Dashboard の D1 Studio で確認します。
+
+送信完了画面では参照IDを表示し、返信が必要な場合は `support@stream-nexus.com` から連絡する旨を案内します。
+
+## 問い合わせ確認用 SQL
+
+最新の問い合わせを確認します。
+
+```sql
+SELECT
+  created_at,
+  category,
+  name,
+  email,
+  substr(message, 1, 120) AS message_preview,
+  status,
+  id
+FROM contact_messages
+ORDER BY created_at DESC
+LIMIT 50;
+```
+
+未対応の問い合わせだけを確認します。
+
+```sql
+SELECT
+  created_at,
+  category,
+  name,
+  email,
+  substr(message, 1, 120) AS message_preview,
+  id
+FROM contact_messages
+WHERE status = 'new'
+ORDER BY created_at DESC;
+```
+
+対応中・完了に変更する場合は、D1 Studio で該当 `id` を確認してから実行します。
+
+```sql
+UPDATE contact_messages
+SET status = 'in_progress'
+WHERE id = 'REFERENCE_ID';
+
+UPDATE contact_messages
+SET status = 'closed'
+WHERE id = 'REFERENCE_ID';
+```
+
+180日より古い完了済み問い合わせを削除する場合の例です。
+
+```sql
+DELETE FROM contact_messages
+WHERE status = 'closed'
+  AND created_at < datetime('now', '-180 days');
+```
