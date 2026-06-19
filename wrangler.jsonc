@@ -3,7 +3,15 @@
   "name": "stream-nexus",
   "compatibility_date": "2026-06-12",
   "main": "./src/worker.js",
+  "workers_dev": false,
+  "preview_urls": false,
   "keep_vars": true,
+  "routes": [
+    {
+      "pattern": "stream-nexus.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./site",
     "binding": "ASSETS",
@@ -13,10 +21,12 @@
   "d1_databases": [
     {
       "binding": "CONTACT_DB",
-      "database_name": "stream-nexus-contact"
+      "database_name": "stream-nexus-contact",
+      "database_id": "b8fb6093-c778-45b5-909e-9bee1efacdab"
     }
   ],
   "vars": {
-    "CONTACT_RETENTION_DAYS": "180"
+    "CONTACT_RETENTION_DAYS": "180",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAADnzTQEQOOyfaWrU"
   }
 }
