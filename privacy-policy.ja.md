@@ -1,7 +1,7 @@
 # StreamNexus プライバシーポリシー
 
 発効日: 2026-06-02
-最終更新日: 2026-06-18
+最終更新日: 2026-06-19
 
 [English version](./privacy-policy.md)
 
@@ -15,12 +15,15 @@ StreamNexus は、ユーザーが初期設定を開始する前、または Twit
 
 ## 2. StreamNexus が取り扱う情報
 
-StreamNexus は、以下の情報を取り扱う場合があります。
+StreamNexus は、以下の情報を取り扱う場合があります。これらの情報は、以下に記載する目的のためにのみ使用します。
 
-- Twitch および YouTube のチャンネル ID、チャンネル名、プロフィール画像 URL、ライブ配信状態、公開動画メタデータ。
-- ユーザーが選択した追跡チャンネル、通知設定、マルチビュー設定、アプリ設定。
-- ユーザーの同意後に Google から発行される YouTube OAuth アクセストークンおよびリフレッシュトークン。
-- トラブルシューティングに必要なローカルログおよびヘルス情報。StreamNexus は、API キー、OAuth クライアントシークレット、OAuth トークンを Git に意図的に保存しない設計です。
+- Twitch および YouTube のチャンネル ID、チャンネル名、プロフィール画像 URL、ライブ配信状態、サムネイル、タイトル、配信予定時刻または実際の配信時刻、視聴 URL、および配信一覧、通知、履歴、マルチビュー再生に必要な公開動画メタデータ。
+- OAuth 同意後に YouTube API Services から返されるユーザーの YouTube 登録チャンネル情報。StreamNexus は、ユーザーが監視対象チャンネルを選択できるようにするためにこの情報を表示します。
+- ユーザーが選択した追跡チャンネル、通知設定、マルチビューのレイアウト設定、音声設定、アプリ設定、ポリシー確認状態。
+- ユーザーの同意後に Google から発行される YouTube OAuth アクセストークンおよびリフレッシュトークン。これらのトークンは、認可済み YouTube API Services の呼び出し、アクセストークン更新、またはアクセス権取り消しのためにのみ使用します。
+- トラブルシューティングに必要なローカルログおよびヘルス情報。これには、アプリバージョン、ローカル実行状態、機密情報を含まない診断メッセージなどが含まれます。
+
+StreamNexus は、API キー、OAuth クライアントシークレット、OAuth トークンを Git に意図的に保存しない設計です。
 
 ## 3. YouTube API Services
 
@@ -49,10 +52,18 @@ StreamNexus は、以下を行いません。
 - YouTube API Services データの販売。
 - 広告、信用評価、または無関係なプロファイリングのための YouTube API Services データの利用。
 
-## 4. 保存と保護
+## 4. 端末上の保存、Cookie、および類似技術
+
+StreamNexus はデスクトップアプリであり、ユーザーの端末上に情報を保存します。これには、暗号化された OAuth トークン、ローカル SQLite データ、ローカル設定ファイル、Electron セッションデータ、localStorage、トラブルシューティング用ログが含まれます。
+
+ユーザーが Google OAuth ページ、YouTube ページ、YouTube 埋め込みプレイヤー、Twitch ページ、アップデートまたはサポートページを開く場合、これらの第三者サービスは、それぞれのブラウザまたは WebView コンテキストで Cookie、localStorage、sessionStorage、デバイス識別子、または類似技術を配置、アクセス、認識する場合があります。StreamNexus は、これらの技術を広告または無関係なトラッキングのために使用しません。
+
+## 5. 保存期間と保護
 
 YouTube OAuth トークンは StreamNexus によってローカルに保存され、アプリ設定へ保存される前に暗号化されます。
 追跡対象の YouTube チャンネルおよび公開配信メタデータは、監視、通知、履歴、マルチビュー機能を提供するためにローカルへ保存される場合があります。
+StreamNexus が表示または保存する YouTube API Services データは、YouTube API Services Developer Policies で要求される場合、30日以内に更新、リフレッシュ、または削除します。
+ユーザーは、StreamNexus の設定からローカル保存済み YouTube 認可済みデータをいつでも削除できます。
 
 StreamNexus は、アプリが取り扱う Google ユーザーデータの機密性を保護するため、以下の保護手段を使用します。
 
@@ -65,12 +76,12 @@ StreamNexus は、アプリが取り扱う Google ユーザーデータの機密
 
 StreamNexus は、YouTube API Services データを販売または再配布する本番サーバーを運用しません。
 
-## 5. 共有
+## 6. 共有
 
 StreamNexus は YouTube API Services データを販売しません。
 StreamNexus は、ユーザー操作、アプリ更新配信、該当プラットフォームでの動画再生、トラブルシューティング、セキュリティ、または法的義務に必要な場合に限り、情報を共有します。
 
-## 6. 削除、連携解除、取り消し
+## 7. 削除、連携解除、取り消し
 
 ユーザーは StreamNexus の設定から YouTube 連携を解除できます。
 ユーザーが YouTube 連携を解除すると、StreamNexus は保存済み Google OAuth token を programmatically revoke し、その後アプリが使用していたローカル保存済み YouTube OAuth token を削除します。
@@ -85,13 +96,16 @@ network error や server error により revocation に失敗した場合、Stre
 - <https://security.google.com/settings/security/permissions>
 
 すべてのローカル StreamNexus データを削除したい場合、ユーザーは YouTube 連携を解除し、local YouTube Authorized Data deletion control を使用し、Windows 上の StreamNexus ローカルアプリデータを削除してください。
-支援が必要な場合は、StreamNexus の Google OAuth 同意画面に表示されるサポートメールへ連絡してください。
+支援が必要な場合は、以下の連絡先から StreamNexus サポートへ連絡できます。
 
-## 7. 変更
+## 8. 変更
 
 StreamNexus は、アプリ機能、API 利用、またはコンプライアンス要件が変わった場合、このポリシーを更新することがあります。
 重要な変更はこのページに反映し、必要に応じてリリースノートまたはアプリ UI でも案内します。
 
-## 8. 連絡先
+## 9. 連絡先
 
-プライバシーに関する質問またはデータ削除の支援が必要な場合は、StreamNexus の Google OAuth 同意画面に表示されるサポートメールへ連絡してください。
+プライバシー、YouTube API Services データ、またはデータ削除の支援に関する問い合わせ先は以下です。
+
+- メール: <tkktgtr35@gmail.com>
+- GitHub サポート: <https://github.com/rodojp/StreamNexus-updates/issues>

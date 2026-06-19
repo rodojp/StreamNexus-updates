@@ -1,7 +1,7 @@
 # StreamNexus Privacy Policy
 
 Effective date: 2026-06-02
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 [日本語版はこちら / Japanese translation](./privacy-policy.ja.md)
 
@@ -15,12 +15,15 @@ StreamNexus shows a policy confirmation screen before users start initial setup 
 
 ## 2. Information StreamNexus Handles
 
-StreamNexus may handle the following information:
+StreamNexus may handle the following information and uses it only for the purposes listed below:
 
-- Twitch and YouTube channel IDs, channel names, profile image URLs, live stream status, and public video metadata.
-- User-selected tracked channels, notification settings, multiview settings, and app preferences.
-- YouTube OAuth access token and refresh token issued by Google after user consent.
-- Local logs and health information needed for troubleshooting. StreamNexus is designed not to intentionally store API keys, OAuth client secrets, or OAuth tokens in Git.
+- Twitch and YouTube channel IDs, channel names, profile image URLs, live stream status, thumbnails, titles, scheduled or actual live times, watch URLs, and other public video metadata needed to show stream lists, notifications, history, and multiview playback.
+- The user's YouTube subscriptions returned by YouTube API Services after OAuth consent. StreamNexus displays this information so the user can choose which channels to monitor.
+- User-selected tracked channels, notification settings, multiview layout settings, audio settings, app preferences, and policy confirmation state.
+- YouTube OAuth access token and refresh token issued by Google after user consent. These tokens are used only to call authorized YouTube API Services, refresh access, or revoke access.
+- Local logs and health information needed for troubleshooting, such as app version, local runtime state, and non-secret diagnostic messages.
+
+StreamNexus is designed not to intentionally store API keys, OAuth client secrets, or OAuth tokens in Git.
 
 ## 3. YouTube API Services
 
@@ -49,10 +52,18 @@ StreamNexus does not:
 - Sell YouTube API Services data.
 - Use YouTube API Services data for advertising, credit scoring, or unrelated profiling.
 
-## 4. Storage and Protection
+## 4. Device Storage, Cookies, and Similar Technologies
+
+StreamNexus is a desktop app and stores information on the user's device. This includes encrypted OAuth tokens, local SQLite data, local settings files, Electron session data, localStorage, and troubleshooting logs.
+
+When users open Google OAuth pages, YouTube pages, YouTube embedded players, Twitch pages, or update/support pages, those third-party services may place, access, or recognize cookies, localStorage, session storage, device identifiers, or similar technologies in their own browser or WebView contexts. StreamNexus does not use these technologies for advertising or unrelated tracking.
+
+## 5. Storage, Retention, and Protection
 
 YouTube OAuth tokens are stored locally by StreamNexus and encrypted before being saved in app settings.
 Tracked YouTube channels and public stream metadata may be stored locally to provide monitoring, notification, history, and multiview features.
+YouTube API Services data that is displayed or stored by StreamNexus is refreshed, updated, or deleted within 30 days where required by the YouTube API Services Developer Policies.
+Users can also delete locally stored YouTube authorized data at any time from StreamNexus settings.
 
 StreamNexus uses security procedures to protect the confidentiality of Google user data handled by the app:
 
@@ -65,12 +76,12 @@ StreamNexus uses security procedures to protect the confidentiality of Google us
 
 StreamNexus does not operate a production server that sells or redistributes YouTube API Services data.
 
-## 5. Sharing
+## 6. Sharing
 
 StreamNexus does not sell YouTube API Services data.
 StreamNexus only shares information when required by user actions, app update delivery, video playback through the relevant platform, troubleshooting, security, or legal obligations.
 
-## 6. Deletion, Disconnect, and Revocation
+## 7. Deletion, Disconnect, and Revocation
 
 Users can disconnect YouTube from StreamNexus settings.
 When the user disconnects YouTube, StreamNexus programmatically revokes the stored Google OAuth token and then clears the locally stored YouTube OAuth tokens used by the app.
@@ -85,13 +96,16 @@ Users can also revoke StreamNexus access from Google's third-party app access pa
 - <https://security.google.com/settings/security/permissions>
 
 If a user wants all local StreamNexus data removed, they should disconnect YouTube, use the local YouTube Authorized Data deletion control, and delete StreamNexus's local app data from Windows.
-If assistance is needed, the user should contact the support email shown on the Google OAuth consent screen.
+If assistance is needed, the user can contact StreamNexus support using the contact information below.
 
-## 7. Changes
+## 8. Changes
 
 StreamNexus may update this policy when app functionality, API usage, or compliance requirements change.
 Material changes will be reflected on this page and, when appropriate, in release notes or the app UI.
 
-## 8. Contact
+## 9. Contact
 
-For privacy questions or data deletion assistance, contact the support email shown on the Google OAuth consent screen for StreamNexus.
+For privacy questions, YouTube API Services data questions, or data deletion assistance, contact:
+
+- Email: <tkktgtr35@gmail.com>
+- GitHub support: <https://github.com/rodojp/StreamNexus-updates/issues>
