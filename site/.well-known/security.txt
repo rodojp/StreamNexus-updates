@@ -1,0 +1,5 @@
+Contact: mailto:security@stream-nexus.com
+Expires: 2027-06-30T00:00:00Z
+Preferred-Languages: ja, en
+Canonical: https://stream-nexus.com/.well-known/security.txt
+Policy: https://stream-nexus.com/support/

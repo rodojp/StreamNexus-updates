@@ -3,10 +3,50 @@ const MAX_JSON_BYTES = 24 * 1024;
 const MAX_NAME_LENGTH = 120;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 4000;
+const CANONICAL_TRAILING_SLASH_PATHS = new Set([
+  "/contact",
+  "/contact/en",
+  "/en",
+  "/privacy",
+  "/privacy/en",
+  "/privacy/ja",
+  "/support",
+  "/support/en",
+  "/terms",
+  "/terms/en",
+  "/terms/ja",
+]);
+const SECURITY_HEADERS = {
+  "content-security-policy": [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "form-action 'self'",
+    "script-src 'self' https://challenges.cloudflare.com",
+    "frame-src https://challenges.cloudflare.com",
+    "connect-src 'self' https://challenges.cloudflare.com",
+    "img-src 'self' data: https:",
+    "style-src 'self' 'unsafe-inline'",
+  ].join("; "),
+  "permissions-policy": "camera=(), geolocation=(), microphone=(), payment=()",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "strict-transport-security": "max-age=31536000",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY",
+};
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (url.pathname === "/security.txt") {
+      return permanentRedirect(url, "/.well-known/security.txt");
+    }
+
+    if (CANONICAL_TRAILING_SLASH_PATHS.has(url.pathname)) {
+      return permanentRedirect(url, `${url.pathname}/`);
+    }
 
     if (url.pathname === "/api/contact/config" && request.method === "GET") {
       return jsonResponse({
@@ -28,9 +68,21 @@ export default {
       return jsonResponse({ error: "not_found" }, 404);
     }
 
-    return env.ASSETS.fetch(request);
+    return withSecurityHeaders(await env.ASSETS.fetch(request));
   },
 };
+
+function permanentRedirect(url, pathname) {
+  const redirectUrl = new URL(url);
+  redirectUrl.pathname = pathname;
+  return new Response(null, {
+    status: 308,
+    headers: {
+      location: redirectUrl.toString(),
+      ...SECURITY_HEADERS,
+    },
+  });
+}
 
 function isContactConfigured(env) {
   return Boolean(env.CONTACT_DB && env.TURNSTILE_SITE_KEY && env.TURNSTILE_SECRET_KEY);
@@ -224,6 +276,20 @@ function jsonResponse(body, status = 200) {
     headers: {
       "content-type": "application/json; charset=utf-8",
       "cache-control": "no-store",
+      ...SECURITY_HEADERS,
     },
+  });
+}
+
+function withSecurityHeaders(response) {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    headers.set(name, value);
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
   });
 }
