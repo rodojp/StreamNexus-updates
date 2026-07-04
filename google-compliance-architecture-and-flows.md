@@ -4,10 +4,8 @@ Last updated: 2026-06-04
 
 [日本語版はこちら / Japanese translation](./google-compliance-architecture-and-flows.ja.md)
 
-This document is prepared as supporting evidence for Google Cloud OAuth verification and YouTube API Services compliance review.
+This document summarizes StreamNexus architecture and data flows for Google Cloud OAuth verification and YouTube API Services compliance review.
 It describes the current StreamNexus architecture, Google / YouTube data flows, user consent flow, revocation flow, and data deletion flow.
-
-This document is not legal advice. It is an engineering and compliance evidence summary based on the current repository.
 
 ## 1. Public Compliance URLs
 
@@ -21,7 +19,7 @@ This document is not legal advice. It is an engineering and compliance evidence 
 
 ## 2. Official Policy References
 
-The review package is aligned against these official Google / YouTube references:
+This summary references these official Google / YouTube policy materials:
 
 - Google API Services User Data Policy: <https://developers.google.com/terms/api-services-user-data-policy>
 - YouTube API Services Developer Policies: <https://developers.google.com/youtube/terms/developer-policies>
@@ -49,7 +47,7 @@ StreamNexus does not use YouTube OAuth to upload, delete, edit, comment on, or m
 
 ## 4. System Architecture
 
-Raster diagram assets for submission attachments:
+Raster diagram assets:
 
 - [Architecture diagram PNG](./assets/google-compliance/streamnexus-architecture.png)
 - [Architecture diagram JPEG](./assets/google-compliance/streamnexus-architecture.jpg)
@@ -195,39 +193,3 @@ Current implementation status:
 - The app links users to Google's third-party access page for account-side revocation.
 - Users can remove tracked YouTube channels from the app.
 - Users can remove all local StreamNexus data by deleting local app data from Windows.
-
-Compliance follow-up before final audit submission:
-
-- Capture screenshots and demo video showing the implemented revocation and local deletion controls.
-- Add periodic confirmation for stored YouTube authorization validity and clean up local YouTube API data when authorization cannot be refreshed.
-
-## 9. User-Facing Screens to Capture
-
-Use English UI language for the Google consent screen when possible.
-Screenshots or video should show the exact same app name, branding, and scope configuration submitted to Google.
-
-Required evidence:
-
-- Pre-use policy consent screen in StreamNexus.
-- Linked Accounts settings with YouTube link and disconnect controls.
-- Google OAuth consent screen showing `StreamNexus`.
-- Expanded scope details showing only YouTube read-only access.
-- YouTube integration behavior that uses the requested scope, for example subscription import or channel selection.
-- In-app YouTube disconnect confirmation and result.
-- Google third-party app access page where StreamNexus access can be removed.
-
-## 10. Evidence Mapping
-
-| Requirement area | Current evidence | Current status |
-| --- | --- | --- |
-| Public homepage | `rodojp/StreamNexus-updates` README | Ready |
-| Public privacy policy | `privacy-policy.md` and Japanese translation | Ready for review |
-| Terms of Service | `terms-of-service.md` and Japanese translation | Ready for review |
-| Google Privacy Policy link | Privacy Policy, Terms, policy screen, settings screen | Ready |
-| YouTube Terms link | Privacy Policy and Terms | Ready |
-| Before-use policy confirmation | `PolicyConsentScreen` before initial setup and account linking | Ready |
-| Minimum OAuth scope | `youtube.readonly` only | Ready |
-| OAuth demo evidence | Needs screenshots / video captured from production configuration | Pending |
-| In-app revocation route | `POST /api/youtube/auth/logout` calls Google token revoke endpoint | Implemented, needs screenshot/demo evidence |
-| Authorized data deletion | `DELETE /api/youtube/authorized-data` deletes local YouTube rows | Implemented, needs screenshot/demo evidence |
-| Access gate architecture | Cloudflare Worker, Google JWKS, D1 allowlist | Ready for supplemental explanation |
