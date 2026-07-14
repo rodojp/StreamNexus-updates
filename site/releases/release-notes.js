@@ -1,6 +1,5 @@
 import {
   extractChangeItems,
-  findChecksumAsset,
   findInstallerAsset,
 } from "/releases/release-notes-model.js";
 
@@ -9,7 +8,6 @@ const copy = {
     beta: "ベータ版",
     stable: "正式版",
     download: "インストーラーをダウンロード",
-    checksum: "SHA-256を確認（任意）",
     details: "GitHubで詳細を見る",
     empty: "公開中のリリースはありません。",
     error: "リリース情報を取得できませんでした。GitHub Releasesをご確認ください。",
@@ -19,7 +17,6 @@ const copy = {
     beta: "Beta",
     stable: "Stable",
     download: "Download installer",
-    checksum: "Verify SHA-256 (optional)",
     details: "View on GitHub",
     empty: "No releases are currently available.",
     error: "Release information is currently unavailable. Please check GitHub Releases.",
@@ -82,9 +79,7 @@ const renderRelease = (release, locale) => {
   const actions = document.createElement("div");
   actions.className = "actions";
   const installer = findInstallerAsset(release.assets);
-  const checksum = findChecksumAsset(release.assets);
   if (installer) actions.append(createLink(labels.download, installer.downloadUrl, true));
-  if (checksum) actions.append(createLink(labels.checksum, checksum.downloadUrl));
   actions.append(createLink(labels.details, release.url));
   article.append(actions);
   return article;

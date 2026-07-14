@@ -31,9 +31,3 @@ export const findInstallerAsset = (assets) => (
     ? assets.find((asset) => asset?.name?.toLowerCase().endsWith(".exe")) ?? null
     : null
 );
-
-export const findChecksumAsset = (assets) => (
-  Array.isArray(assets)
-    ? assets.find((asset) => asset?.name?.toLowerCase() === "sha256sums.txt") ?? null
-    : null
-);

@@ -3,7 +3,6 @@ import test from "node:test";
 
 import {
   extractChangeItems,
-  findChecksumAsset,
   findInstallerAsset,
 } from "../site/releases/release-notes-model.js";
 
@@ -36,13 +35,4 @@ test("findInstallerAsset excludes blockmaps and finds the Windows installer", ()
   ];
 
   assert.equal(findInstallerAsset(assets)?.downloadUrl, "https://example.com/installer");
-});
-
-test("findChecksumAsset finds SHA256SUMS.txt", () => {
-  const assets = [
-    { name: "beta.yml", downloadUrl: "https://example.com/beta" },
-    { name: "SHA256SUMS.txt", downloadUrl: "https://example.com/checksums" },
-  ];
-
-  assert.equal(findChecksumAsset(assets)?.downloadUrl, "https://example.com/checksums");
 });
