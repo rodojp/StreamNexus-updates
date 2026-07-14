@@ -7,6 +7,7 @@ StreamNexus is a Windows desktop application for Twitch and YouTube stream monit
 ## Official links
 
 - Website: <https://stream-nexus.com/>
+- Release notes: <https://stream-nexus.com/releases/>
 - Downloads and release notes: <https://github.com/rodojp/StreamNexus-updates/releases>
 - Support: <https://stream-nexus.com/support/>
 - Contact: <https://stream-nexus.com/contact/>

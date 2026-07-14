@@ -8,6 +8,7 @@
 - `/api/contact/config`: Turnstile site key を返す API
 - `/api/contact`: Turnstile を検証し、問い合わせ内容を D1 に保存する API
 - `CONTACT_DB`: 問い合わせ保存用 D1 binding
+- Cron Trigger: 毎日、保持期限を過ぎた対応完了済み問い合わせを削除
 
 ## Cloudflare 側で必要な設定
 
@@ -55,10 +56,22 @@ D1 には以下を保存します。
 
 ## 無料枠での運用方針
 
-Cloudflare Email Sending は Workers Paid が必要なため、初期運用では通知メールを送信しません。
-問い合わせは D1 に保存し、Cloudflare Dashboard の D1 Studio で確認します。
+問い合わせ通知は現在未実装です。問い合わせは D1 に保存し、Cloudflare Dashboard の D1 Studio で確認します。
+
+Cloudflare Email Service は、確認済み宛先への送信であれば Workers Free でも利用できます。通知先は `support@stream-nexus.com`、`security@stream-nexus.com`、`privacy@stream-nexus.com`、`info@stream-nexus.com` の運用方針確定後に実装します。
 
 送信完了画面では参照IDを表示し、返信が必要な場合は `support@stream-nexus.com` から連絡する旨を案内します。
+
+## 保持期限の自動適用
+
+`wrangler.jsonc` の Cron Trigger は毎日 03:17 UTC に実行されます。`CONTACT_RETENTION_DAYS` の既定値は180日です。
+
+自動削除の対象は次の条件を両方満たす問い合わせだけです。
+
+- `status = 'closed'`
+- `created_at` が保持期限より古い
+
+`new` または `in_progress` の問い合わせは、保持期限を過ぎても自動削除しません。実行結果には保持日数と削除件数だけを記録し、問い合わせ本文やメールアドレスはログへ出力しません。
 
 ## エラー監視
 

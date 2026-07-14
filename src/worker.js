@@ -3,6 +3,10 @@ const MAX_JSON_BYTES = 24 * 1024;
 const MAX_NAME_LENGTH = 120;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 4000;
+const DEFAULT_CONTACT_RETENTION_DAYS = 180;
+const MAX_CONTACT_RETENTION_DAYS = 3650;
+const RELEASE_CACHE_SECONDS = 600;
+const RELEASES_API_URL = "https://api.github.com/repos/rodojp/StreamNexus-updates/releases?per_page=20";
 const CANONICAL_TRAILING_SLASH_PATHS = new Set([
   "/contact",
   "/contact/en",
@@ -10,6 +14,8 @@ const CANONICAL_TRAILING_SLASH_PATHS = new Set([
   "/privacy",
   "/privacy/en",
   "/privacy/ja",
+  "/releases",
+  "/releases/en",
   "/support",
   "/support/en",
   "/terms",
@@ -64,13 +70,134 @@ export default {
       }
     }
 
+    if (url.pathname === "/api/releases" && request.method === "GET") {
+      return handleReleaseList(request);
+    }
+
     if (url.pathname.startsWith("/api/")) {
       return jsonResponse({ error: "not_found" }, 404);
     }
 
     return withSecurityHeaders(await env.ASSETS.fetch(request));
   },
+
+  async scheduled(_controller, env) {
+    await deleteExpiredClosedContacts(env);
+  },
 };
+
+async function handleReleaseList(request) {
+  const cache = globalThis.caches?.default;
+  const cachedResponse = await cache?.match(request);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  const upstreamResponse = await fetch(RELEASES_API_URL, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "StreamNexus-release-notes",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+  if (!upstreamResponse.ok) {
+    console.error(JSON.stringify({
+      event: "release_list_fetch_failed",
+      status: upstreamResponse.status,
+    }));
+    return jsonResponse({ error: "release_list_unavailable" }, 502);
+  }
+
+  const upstreamReleases = await upstreamResponse.json();
+  if (!Array.isArray(upstreamReleases)) {
+    return jsonResponse({ error: "invalid_release_list" }, 502);
+  }
+
+  const releases = upstreamReleases
+    .filter((release) => release && typeof release === "object" && release.draft !== true)
+    .map(normalizeRelease)
+    .filter(Boolean);
+  const response = new Response(JSON.stringify({ releases }), {
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": `public, max-age=${RELEASE_CACHE_SECONDS}, stale-while-revalidate=3600`,
+      ...SECURITY_HEADERS,
+    },
+  });
+
+  await cache?.put(request, response.clone());
+  return response;
+}
+
+function normalizeRelease(release) {
+  const id = Number(release.id);
+  const tagName = typeof release.tag_name === "string" ? release.tag_name : "";
+  const name = typeof release.name === "string" && release.name.trim()
+    ? release.name.trim()
+    : tagName;
+  const url = typeof release.html_url === "string" ? release.html_url : "";
+  if (!Number.isFinite(id) || !tagName || !name || !url) {
+    return null;
+  }
+
+  const assets = Array.isArray(release.assets)
+    ? release.assets
+      .map((asset) => {
+        const assetName = typeof asset?.name === "string" ? asset.name : "";
+        const downloadUrl = typeof asset?.browser_download_url === "string"
+          ? asset.browser_download_url
+          : "";
+        if (!assetName || !downloadUrl) return null;
+        return {
+          name: assetName,
+          downloadUrl,
+          size: Number.isFinite(Number(asset.size)) ? Number(asset.size) : 0,
+        };
+      })
+      .filter(Boolean)
+    : [];
+
+  return {
+    id,
+    tagName,
+    name,
+    prerelease: release.prerelease === true,
+    publishedAt: typeof release.published_at === "string" ? release.published_at : "",
+    url,
+    body: typeof release.body === "string" ? release.body : "",
+    assets,
+  };
+}
+
+async function deleteExpiredClosedContacts(env) {
+  if (!env.CONTACT_DB) {
+    console.warn(JSON.stringify({ event: "contact_retention_skipped", reason: "database_not_configured" }));
+    return;
+  }
+
+  const retentionDays = parseRetentionDays(env.CONTACT_RETENTION_DAYS);
+  const result = await env.CONTACT_DB.prepare(
+    `DELETE FROM contact_messages
+     WHERE status = 'closed'
+       AND datetime(created_at) < datetime('now', ?)`
+  )
+    .bind(`-${retentionDays} days`)
+    .run();
+
+  console.log(JSON.stringify({
+    event: "contact_retention_completed",
+    retentionDays,
+    deleted: Number(result?.meta?.changes ?? 0),
+  }));
+}
+
+function parseRetentionDays(rawValue) {
+  const parsed = Number.parseInt(String(rawValue ?? ""), 10);
+  if (!Number.isFinite(parsed) || parsed < 1 || parsed > MAX_CONTACT_RETENTION_DAYS) {
+    return DEFAULT_CONTACT_RETENTION_DAYS;
+  }
+  return parsed;
+}
 
 function permanentRedirect(url, pathname) {
   const redirectUrl = new URL(url);

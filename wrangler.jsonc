@@ -35,5 +35,10 @@
   "vars": {
     "CONTACT_RETENTION_DAYS": "180",
     "TURNSTILE_SITE_KEY": "0x4AAAAAADnzTQEQOOyfaWrU"
+  },
+  "triggers": {
+    "crons": [
+      "17 3 * * *"
+    ]
   }
 }

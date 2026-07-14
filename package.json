@@ -1,0 +1,13 @@
+{
+  "name": "streamnexus-updates-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "check": "node --check src/worker.js && node --check site/releases/release-notes.js && node --test",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
