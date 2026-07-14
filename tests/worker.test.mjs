@@ -247,3 +247,124 @@ test("scheduled retention uses 180 days when the configured period is invalid", 
 
   assert.deepEqual(calls[0].bindings, ["-180 days"]);
 });
+
+test("HTML assets receive a per-response CSP nonce for Cloudflare JavaScript Detections", async () => {
+  const env = {
+    ASSETS: {
+      async fetch() {
+        return new Response("<!doctype html><title>StreamNexus</title>", {
+          headers: { "content-type": "text/html; charset=utf-8" },
+        });
+      },
+    },
+  };
+
+  const response = await worker.fetch(new Request("https://stream-nexus.com/"), env);
+  const policy = response.headers.get("content-security-policy") ?? "";
+  const scriptDirective = policy.split(";").find((directive) => directive.trim().startsWith("script-src")) ?? "";
+
+  assert.match(scriptDirective, /'nonce-[^']+'/);
+  assert.match(scriptDirective, /https:\/\/static\.cloudflareinsights\.com/);
+  assert.doesNotMatch(scriptDirective, /'unsafe-inline'/);
+  assert.match(policy, /connect-src[^;]*https:\/\/cloudflareinsights\.com/);
+});
+
+test("contact configuration, redirects, and API rejection paths remain available", async () => {
+  const configuredEnv = {
+    CONTACT_DB: {},
+    TURNSTILE_SITE_KEY: "site-key",
+    TURNSTILE_SECRET_KEY: "secret-key",
+  };
+
+  const configResponse = await worker.fetch(
+    new Request("https://stream-nexus.com/api/contact/config"),
+    configuredEnv,
+  );
+  assert.deepEqual(await configResponse.json(), { enabled: true, siteKey: "site-key" });
+
+  const redirectResponse = await worker.fetch(
+    new Request("https://stream-nexus.com/releases?source=test"),
+    configuredEnv,
+  );
+  assert.equal(redirectResponse.status, 308);
+  assert.equal(redirectResponse.headers.get("location"), "https://stream-nexus.com/releases/?source=test");
+
+  const unknownResponse = await worker.fetch(
+    new Request("https://stream-nexus.com/api/unknown"),
+    configuredEnv,
+  );
+  assert.equal(unknownResponse.status, 404);
+
+  const unsupportedResponse = await worker.fetch(
+    new Request("https://stream-nexus.com/api/contact", {
+      method: "POST",
+      headers: { "content-type": "text/plain" },
+      body: "not json",
+    }),
+    configuredEnv,
+  );
+  assert.equal(unsupportedResponse.status, 415);
+});
+
+test("a valid contact submission passes Turnstile and is stored in D1", async () => {
+  const originalFetch = globalThis.fetch;
+  const databaseCalls = [];
+  const database = {
+    prepare(query) {
+      const call = { query, bindings: [] };
+      databaseCalls.push(call);
+      return {
+        bind(...bindings) {
+          call.bindings = bindings;
+          return this;
+        },
+        async run() {
+          return { success: true, meta: { changes: 1 } };
+        },
+      };
+    },
+  };
+  globalThis.fetch = async (url) => {
+    assert.equal(String(url), "https://challenges.cloudflare.com/turnstile/v0/siteverify");
+    return Response.json({ success: true, action: "contact" });
+  };
+
+  try {
+    const response = await worker.fetch(
+      new Request("https://stream-nexus.com/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "cf-connecting-ip": "192.0.2.1",
+          "user-agent": "StreamNexus test",
+        },
+        body: JSON.stringify({
+          locale: "ja",
+          category: "general",
+          name: "Tester",
+          email: "tester@example.com",
+          message: "This is a valid contact message.",
+          turnstileToken: "valid-turnstile-token",
+        }),
+      }),
+      {
+        CONTACT_DB: database,
+        TURNSTILE_SITE_KEY: "site-key",
+        TURNSTILE_SECRET_KEY: "secret-key",
+      },
+    );
+    const body = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(body.ok, true);
+    assert.match(body.referenceId, /^[0-9a-f-]{36}$/i);
+    assert.equal(databaseCalls.filter(({ query }) => query.includes("CREATE TABLE")).length, 1);
+    assert.equal(databaseCalls.filter(({ query }) => query.includes("CREATE INDEX")).length, 2);
+    const insertCall = databaseCalls.find(({ query }) => query.includes("INSERT INTO contact_messages"));
+    assert.ok(insertCall);
+    assert.equal(insertCall.bindings[5], "tester@example.com");
+    assert.equal(insertCall.bindings.at(-1), "new");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});

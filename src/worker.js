@@ -22,19 +22,20 @@ const CANONICAL_TRAILING_SLASH_PATHS = new Set([
   "/terms/en",
   "/terms/ja",
 ]);
-const SECURITY_HEADERS = {
-  "content-security-policy": [
+const createContentSecurityPolicy = (nonce) => [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    "script-src 'self' https://challenges.cloudflare.com",
+    `script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com${nonce ? ` 'nonce-${nonce}'` : ""}`,
     "frame-src https://challenges.cloudflare.com",
-    "connect-src 'self' https://challenges.cloudflare.com",
+    "connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com",
     "img-src 'self' data: https:",
     "style-src 'self' 'unsafe-inline'",
-  ].join("; "),
+  ].join("; ");
+const SECURITY_HEADERS = {
+  "content-security-policy": createContentSecurityPolicy(),
   "permissions-policy": "camera=(), geolocation=(), microphone=(), payment=()",
   "referrer-policy": "strict-origin-when-cross-origin",
   "strict-transport-security": "max-age=31536000",
@@ -412,6 +413,10 @@ function withSecurityHeaders(response) {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     headers.set(name, value);
+  }
+  if (headers.get("content-type")?.toLowerCase().includes("text/html")) {
+    const nonce = crypto.randomUUID().replaceAll("-", "");
+    headers.set("content-security-policy", createContentSecurityPolicy(nonce));
   }
 
   return new Response(response.body, {
