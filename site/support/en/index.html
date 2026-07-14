@@ -61,10 +61,10 @@
       <li>Uninstall StreamNexus from Windows Installed apps.</li>
     </ol>
 
-    <h2>Verify a download</h2>
+    <h2>Verify a download (optional)</h2>
     <p>
-      Releases that include <code>SHA256SUMS.txt</code> can be verified by comparing the installer SHA-256 value.
-      Run the following PowerShell command and compare the result with <code>SHA256SUMS.txt</code> from the same release.
+      SHA-256 verification is not required for a normal download from the official GitHub Releases page.
+      To check for file corruption or confirm that a local file matches the published asset, run the following PowerShell command and optionally compare the result with <code>SHA256SUMS.txt</code> from the same release.
     </p>
     <p><code>Get-FileHash .\StreamNexus-Setup-&lt;version&gt;.exe -Algorithm SHA256</code></p>
 

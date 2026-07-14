@@ -61,10 +61,10 @@
       <li>アンインストールはWindowsの「インストールされているアプリ」から行います。</li>
     </ol>
 
-    <h2>ダウンロードの整合性確認</h2>
+    <h2>ダウンロードの整合性確認（任意）</h2>
     <p>
-      <code>SHA256SUMS.txt</code> が添付されているリリースでは、インストーラーのSHA-256値を照合できます。
-      PowerShellで次のコマンドを実行し、表示された値が同じリリースの <code>SHA256SUMS.txt</code> と一致することを確認してください。
+      公式GitHub Releasesから通常どおりダウンロードする場合、SHA-256の照合は必須ではありません。
+      ファイル破損や手元のファイルとの一致を確認したい場合は、PowerShellで次のコマンドを実行し、同じリリースの <code>SHA256SUMS.txt</code> と任意で比較できます。
     </p>
     <p><code>Get-FileHash .\StreamNexus-Setup-&lt;version&gt;.exe -Algorithm SHA256</code></p>
 
