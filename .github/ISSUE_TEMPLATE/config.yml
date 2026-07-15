@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: StreamNexus support
+    url: https://stream-nexus.com/support/
+    about: Read support guidance before opening an issue.
+  - name: Private contact
+    url: https://stream-nexus.com/contact/
+    about: Contact the project without posting information publicly.
+  - name: Security report
+    url: https://github.com/rodojp/StreamNexus-updates/security/policy
+    about: Follow the security policy for vulnerability reports.
