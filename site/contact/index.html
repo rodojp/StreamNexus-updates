@@ -66,9 +66,25 @@
         <textarea name="message" rows="9" maxlength="4000" required placeholder="発生している問題、利用中のバージョン、再現手順などを記載してください。"></textarea>
       </label>
 
+      <label>
+        添付ファイル 任意
+        <input
+          id="contact-attachments"
+          type="file"
+          name="attachments"
+          accept=".png,.jpg,.jpeg,.webp,.txt,.log,.json"
+          aria-describedby="attachment-help"
+          multiple
+        >
+      </label>
+      <p id="attachment-help" class="muted">
+        スクリーンショットまたは診断ログを最大3ファイル添付できます。1ファイル5MB、合計10MBまでです。
+        添付ファイルは非公開で保存し、最大90日で自動削除します。
+      </p>
+
       <div id="turnstile-container" class="turnstile-container"></div>
       <p class="muted">
-        認証トークン、パスワード、不要な個人情報、ログイン済み画面の画像は送信しないでください。
+        認証トークン、Cookie、パスワード、不要な個人情報、ログイン済み画面の画像は送信しないでください。
       </p>
 
       <button class="button primary" type="submit" disabled>送信する</button>

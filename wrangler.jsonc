@@ -33,7 +33,15 @@
       "database_id": "b8fb6093-c778-45b5-909e-9bee1efacdab"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "CONTACT_ATTACHMENTS",
+      "bucket_name": "stream-nexus-contact-attachments"
+    }
+  ],
   "vars": {
+    "CONTACT_ATTACHMENT_RETENTION_DAYS": "90",
+    "CONTACT_ATTACHMENT_STORAGE_LIMIT_BYTES": "8589934592",
     "CONTACT_RETENTION_DAYS": "180",
     "TURNSTILE_SITE_KEY": "0x4AAAAAADnzTQEQOOyfaWrU"
   },

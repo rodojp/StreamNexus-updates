@@ -65,9 +65,25 @@
         <textarea name="message" rows="9" maxlength="4000" required placeholder="Include the app version, steps to reproduce, and relevant details."></textarea>
       </label>
 
+      <label>
+        Attachments optional
+        <input
+          id="contact-attachments"
+          type="file"
+          name="attachments"
+          accept=".png,.jpg,.jpeg,.webp,.txt,.log,.json"
+          aria-describedby="attachment-help"
+          multiple
+        >
+      </label>
+      <p id="attachment-help" class="muted">
+        Attach up to three screenshots or diagnostic logs. Each file may be up to 5 MB and the combined limit is 10 MB.
+        Attachments are stored privately and automatically deleted within 90 days.
+      </p>
+
       <div id="turnstile-container" class="turnstile-container"></div>
       <p class="muted">
-        Do not send authentication tokens, passwords, unnecessary personal data, or screenshots of signed-in pages.
+        Do not send authentication tokens, cookies, passwords, unnecessary personal data, or screenshots of signed-in pages.
       </p>
 
       <button class="button primary" type="submit" disabled>Submit</button>
